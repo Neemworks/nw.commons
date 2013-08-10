@@ -30,7 +30,7 @@ public class BaseProperties {
 	private static BaseProperties prop;
 	private Properties props = new Properties(); // Empty Java properties object
 	private String comments = "Auto Generated";
-	private String fileName = "application.properties";
+	private String fileName = ".nr/config/application.properties";
 	private final Logger logger = LoggerFactory.getLogger(getClass());
 
 	private BaseProperties() {
