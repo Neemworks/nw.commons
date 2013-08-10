@@ -31,7 +31,8 @@ public class BaseProperties {
 	private static BaseProperties prop;
 	private Properties props = new Properties(); // Empty Java properties object
 	private String comments = "Auto Generated";
-	private String fileName = ".nr/config/application.properties";
+	private String fileName = "application.properties";
+	private String fileDir = ".nr/config";
 	private final Logger logger = LoggerFactory.getLogger(getClass());
 
 	private BaseProperties() {
@@ -49,9 +50,18 @@ public class BaseProperties {
 		return prop;
 	}
 
+	/**
+	 * Used to customize the name of the properties file.
+	 * @param fileName
+	 */
+	public void setFileName(String fileName){
+		this.fileName = fileName;
+		loadProperties();
+	}
+
 	private Properties loadProperties() {
 		try {
-			FileInputStream fis = new FileInputStream(fileName);
+			FileInputStream fis = new FileInputStream( fileDir + "/" +fileName);
 			props.load(fis);
 
 			fis.close();
