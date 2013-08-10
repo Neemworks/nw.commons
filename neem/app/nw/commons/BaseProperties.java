@@ -56,12 +56,13 @@ public class BaseProperties {
 	 */
 	public void setFileName(String fileName){
 		this.fileName = fileName;
+		props = new Properties();
 		loadProperties();
 	}
 
 	private Properties loadProperties() {
 		try {
-			FileInputStream fis = new FileInputStream( fileDir + "/" +fileName);
+			FileInputStream fis = new FileInputStream(fileDir + "/" +fileName);
 			props.load(fis);
 
 			fis.close();
@@ -77,7 +78,7 @@ public class BaseProperties {
 
 	private void updateProperties() {
 		try {
-			FileOutputStream fos = new FileOutputStream(fileName);
+			FileOutputStream fos = new FileOutputStream(fileDir + "/" +fileName);
 			props.store(fos, comments);
 			fos.flush();
 			fos.close();
