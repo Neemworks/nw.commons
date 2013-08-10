@@ -1,5 +1,6 @@
 package nw.commons;
 
+import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
@@ -30,7 +31,7 @@ public class BaseProperties {
 	private static BaseProperties prop;
 	private Properties props = new Properties(); // Empty Java properties object
 	private String comments = "Auto Generated";
-	private String fileName = "application.properties";
+	private String fileName = ".nr/config/application.properties";
 	private final Logger logger = LoggerFactory.getLogger(getClass());
 
 	private BaseProperties() {
@@ -50,8 +51,12 @@ public class BaseProperties {
 
 	private Properties loadProperties() {
 		try {
-			props.load(new FileInputStream(fileName));
+			FileInputStream fis = new FileInputStream(fileName);
+			props.load(fis);
+
+			fis.close();
 		} catch (FileNotFoundException e) {
+			new File(".nr/config").mkdirs();
 			updateProperties();
 			logger.error(e.getMessage());
 		} catch (IOException e) {
