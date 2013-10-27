@@ -32,7 +32,6 @@ public class BaseProperties {
 	private Properties props = new Properties(); // Empty Java properties object
 	private String comments = "Auto Generated";
 	private String fileName = "application.properties";
-	private String fileDir = ".nr/config";
 	private final Logger logger = LoggerFactory.getLogger(getClass());
 
 	private BaseProperties() {
@@ -62,7 +61,7 @@ public class BaseProperties {
 
 	private Properties loadProperties() {
 		try {
-			FileInputStream fis = new FileInputStream(fileDir + "/" +fileName);
+			FileInputStream fis = new FileInputStream(fileName);
 			props.load(fis);
 
 			fis.close();
@@ -78,7 +77,7 @@ public class BaseProperties {
 
 	private void updateProperties() {
 		try {
-			FileOutputStream fos = new FileOutputStream(fileDir + "/" +fileName);
+			FileOutputStream fos = new FileOutputStream(fileName);
 			props.store(fos, comments);
 			fos.flush();
 			fos.close();
