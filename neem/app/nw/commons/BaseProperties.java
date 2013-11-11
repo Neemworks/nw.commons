@@ -1,10 +1,10 @@
 package nw.commons;
 
-import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.math.BigDecimal;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Properties;
@@ -14,48 +14,30 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 /**
- * Property of Neemworks Limited
  *
  * Provides a means of manipulating property files used by the project,
  * automatically creates a property file if it does not see one in application
  * root folder. Only a single instance of the class is expected to exists
  *
  * @author Ogwara O. Rowland (r.ogwara@nimworks.com)
- * @version 0.2
- * @since 11th May, 2013
+ * @version 0.3
+ * @since 10th November, 2013
  *
  */
 
 public class BaseProperties {
 
-	private static BaseProperties prop;
 	private Properties props = new Properties(); // Empty Java properties object
 	private String comments = "Auto Generated";
 	private String fileName = "application.properties";
 	private final Logger logger = LoggerFactory.getLogger(getClass());
 
-	private BaseProperties() {
+	public BaseProperties() {
 		loadProperties();
 	}
-
-	/** loads or creates a default properties file */
-	public static BaseProperties getInstance() {
-
-		if (prop == null) {
-			synchronized (BaseProperties.class) {
-				prop = new BaseProperties();
-			}
-		}
-		return prop;
-	}
-
-	/**
-	 * Used to customize the name of the properties file.
-	 * @param fileName
-	 */
-	public void setFileName(String fileName){
+	
+	public BaseProperties(String fileName) {
 		this.fileName = fileName;
-		props = new Properties();
 		loadProperties();
 	}
 
@@ -66,7 +48,6 @@ public class BaseProperties {
 
 			fis.close();
 		} catch (FileNotFoundException e) {
-			new File(".nr/config").mkdirs();
 			updateProperties();
 			logger.error(e.getMessage());
 		} catch (IOException e) {
@@ -131,7 +112,53 @@ public class BaseProperties {
 		updateProperties();
 	}
 
+	/**
+	 * 
+	 * @param key
+	 * @param defaultVal
+	 * @return retrieves int from property files
+	 */
 	public Integer getInt(String key, String defaultVal) {
 		return Integer.valueOf(props.getProperty(key, defaultVal));
+	}
+	
+	/**
+	 * 
+	 * @param key
+	 * @param defaultVal
+	 * @return retrieves Long from property files
+	 */
+	public Long getLong(String key, String defaultVal) {
+		return Long.valueOf(props.getProperty(key, defaultVal));
+	}
+	
+	/**
+	 * 
+	 * @param key
+	 * @param defaultVal
+	 * @return retrieves BigDecimal from property files
+	 */
+	public BigDecimal getBigDecimal(String key, String defaultVal) {
+		return new BigDecimal(props.getProperty(key, defaultVal));
+	}
+	
+	/**
+	 * 
+	 * @param key
+	 * @param defaultVal
+	 * @return retrieves double from property files
+	 */
+	public Double getDouble(String key, String defaultVal) {
+		return Double.valueOf(props.getProperty(key, defaultVal));
+	}
+	
+	/**
+	 * 
+	 * @param key
+	 * @param defaultVal
+	 * @return retrieves an int from property files
+	 */
+	public Float getFloat(String key, String defaultVal) {
+		return Float.valueOf(props.getProperty(key, defaultVal));
 	}
 }
