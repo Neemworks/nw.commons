@@ -26,7 +26,7 @@ public abstract class LoopProcess extends NeemClazz implements Runnable{
 			processId = UUID.randomUUID().toString(); // Generate identifier for this process
 		while(processState != ProcessState.STOP){
 			StopWatch pw = new StopWatch();
-			process();
+			doWork();
 			logger.info("Current action has been concluded. " + processId + " Run Time: " + pw.elapsedTime() + " ms");
 			sleep();
 		}
@@ -46,14 +46,26 @@ public abstract class LoopProcess extends NeemClazz implements Runnable{
 		this.sleepTime = sleepTime;
 	}
 	
+	private final void doWork(){
+		if(processState == ProcessState.PAUSE)
+			pauseProcess();
+		process();
+	}
+
+	
 	/**
 	 * Pauses the current process until the resume method is called
 	 * @throws InterruptedException
 	 */
-	public final void pauseProcess() throws InterruptedException {
+	private final void pauseProcess() {
 		synchronized (this) {
 			logger.info("Process has been paused: pid " + processId);
-			wait();
+			processState = ProcessState.PAUSE;
+			try {
+				this.wait();
+			} catch (Exception e) {
+				logger.error("Interrupted Exception while pausing process: ", e);
+			}
 		}
 
 	}
@@ -65,7 +77,7 @@ public abstract class LoopProcess extends NeemClazz implements Runnable{
 		synchronized (this) {
 			processState = ProcessState.ACTIVE;
 			logger.info("Process has been resumed: pid " + processId);
-			notify();
+			this.notify();
 		}
 	}
 	
