@@ -7,7 +7,7 @@ import nw.commons.NeemClazz;
  * @author kulgan
  *
  */
-public class ThreadUtil extends NeemClazz{
+public class AsyncFactory extends NeemClazz{
 
 	public static void spawnRunnable(Runnable proc, String processName, boolean autoStart, boolean daemon){
 		Thread t = new Thread(proc);
