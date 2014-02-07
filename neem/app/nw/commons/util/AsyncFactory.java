@@ -26,4 +26,15 @@ public class AsyncFactory extends NeemClazz{
 	public static void spawnRunnable(Runnable proc, String processName){
 		spawnRunnable(proc, processName, true, false);
 	}
+	
+	public static void spawnMultiple(Class<?> clazz, String processName, int numberOfProcess){
+		for(int z = 0; z <= numberOfProcess; z++){
+			try {
+				Runnable proc = (Runnable) clazz.getConstructor().newInstance();
+				spawnRunnable(proc, processName + "_" + z);
+			} catch (Exception e) {
+				se(AsyncFactory.class, "", e);
+			}
+		}
+	}
 }

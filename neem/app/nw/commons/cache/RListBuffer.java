@@ -1,6 +1,6 @@
 package nw.commons.cache;
 
-import java.util.concurrent.ConcurrentLinkedQueue;
+import java.util.concurrent.LinkedBlockingQueue;
 
 import nw.commons.NeemClazz;
 
@@ -12,10 +12,14 @@ import nw.commons.NeemClazz;
  */
 public class RListBuffer<T> extends NeemClazz {
 	
-	private ConcurrentLinkedQueue<T> queue;
+	protected LinkedBlockingQueue<T> queue;
 	
 	public RListBuffer(){
-		queue = new ConcurrentLinkedQueue<T>();
+		queue = new LinkedBlockingQueue<T>();
+	}
+	
+	public RListBuffer(int queueCap){
+		queue = new LinkedBlockingQueue<T>(queueCap);
 	}
 	
 	/**
@@ -40,6 +44,14 @@ public class RListBuffer<T> extends NeemClazz {
 	 */
 	public T getHeadItem() {
 		return queue.peek();
+	}
+	
+	public void longQueue(T item) throws InterruptedException{
+		queue.put(item);
+	}
+	
+	public T longDeque() throws InterruptedException{
+		return queue.take();
 	}
 	
 }
