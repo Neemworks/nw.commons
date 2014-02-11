@@ -20,11 +20,19 @@ public class NeemClazz {
      * logger
      */
     protected Logger logger = LoggerFactory.getLogger(getClass());
+    
+    private boolean debugModeOn;
 
     /**
      * Default Properties file manipulations (application.properties)
      */
     protected BaseProperties appProps = PropertiesCache.getPropertyFile();
+    
+    
+    public void debug(String msg){
+    	if(isDebugModeOn())
+    		logger.debug(msg);
+    }
     
     /**
      * static debug logging
@@ -71,5 +79,13 @@ public class NeemClazz {
     protected static void se(Class<? extends NeemClazz> clz, String msg, Throwable t){
     	LoggerFactory.getLogger(clz).error(msg, t);
     }
+
+	public boolean isDebugModeOn() {
+		return debugModeOn;
+	}
+
+	public void setDebugModeOn(boolean debugModeOn) {
+		this.debugModeOn = debugModeOn;
+	}
 
 }
