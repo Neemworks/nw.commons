@@ -1,6 +1,7 @@
 package nw.commons;
 
 import java.io.IOException;
+import java.io.UnsupportedEncodingException;
 
 import sun.misc.BASE64Decoder;
 import sun.misc.BASE64Encoder;
@@ -19,9 +20,10 @@ public class RCoder {
 	 * @param text
 	 *            <i> Plain string to be encoded </i>
 	 * @return Base64 encoded string
+	 * @throws UnsupportedEncodingException 
 	 */
-	public String encode(String text) {
-		return new BASE64Encoder().encode(text.getBytes());
+	public String encode(String text) throws UnsupportedEncodingException {
+		return new BASE64Encoder().encode(text.getBytes("UTF-8"));
 	}
 
 	/**
