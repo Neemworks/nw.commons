@@ -23,8 +23,9 @@ public abstract class LoopProcess extends NeemClazz implements Runnable{
 	public void run() {
 		debug("Starting process with processId: " + processId);
 		StopWatch  sw = new StopWatch();
-		if(processId == null)
+		if(processId == null){
 			processId = UUID.randomUUID().toString(); // Generate identifier for this process
+		}
 		while(processState != ProcessState.STOP){
 			StopWatch pw = new StopWatch();
 			doWork();
