@@ -7,7 +7,7 @@ package nw.commons;
  * @since 11th May, 2013
  *
  */
-public class AppDetail {
+public class AppDetail extends NeemClazz{
 
     /**
      * Target application name
