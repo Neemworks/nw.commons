@@ -3,9 +3,6 @@ package nw.commons;
 import java.io.IOException;
 import java.io.UnsupportedEncodingException;
 
-import sun.misc.BASE64Decoder;
-import sun.misc.BASE64Encoder;
-
 /**
  *
  * @author Ogwara O. Rowland
@@ -23,7 +20,7 @@ public class RCoder {
 	 * @throws UnsupportedEncodingException 
 	 */
 	public String encode(String text) throws UnsupportedEncodingException {
-		return new BASE64Encoder().encode(text.getBytes("UTF-8"));
+		return text;//TODO
 	}
 
 	/**
@@ -34,7 +31,7 @@ public class RCoder {
 	 * @throws IOException
 	 */
 	public String decode(String coded) throws IOException {
-		return new String(new BASE64Decoder().decodeBuffer(coded));
+		return coded;//TODO
 	}
 
 }
