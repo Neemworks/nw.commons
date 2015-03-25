@@ -48,15 +48,16 @@ public abstract class LoopProcess extends NeemClazz implements Runnable{
 	}
 	
 	private final void doWork(){
-		if(processState == ProcessState.PAUSE)
+		if(processState == ProcessState.PAUSE){
 			pauseProcess();
+		}
 		process();
 	}
 
 	
 	/**
 	 * Pauses the current process until the resume method is called
-	 * @throws InterruptedException
+	 * 
 	 */
 	private final void pauseProcess() {
 		synchronized (this) {
@@ -96,7 +97,7 @@ public abstract class LoopProcess extends NeemClazz implements Runnable{
 
 	/**
 	 * Update the process state
-	 * @param processState
+	 * @param processState see {@link ProcessState}
 	 */
 	public void setProcessState(ProcessState processState) {
 		this.processState = processState;

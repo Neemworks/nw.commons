@@ -1,3 +1,8 @@
+/*
+ * Property of Neemworks Nigeria 
+ * Copyright 2013 - 2015, all rights reserved
+ */
+
 package nw.commons;
 
 import java.io.FileInputStream;
@@ -13,6 +18,7 @@ import java.util.Set;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+// TODO: Auto-generated Javadoc
 /**
  *
  * Provides a means of manipulating property files used by the project,
@@ -27,20 +33,40 @@ import org.slf4j.LoggerFactory;
 
 public class BaseProperties {
 
+	/** The props. */
 	private Properties props = new Properties(); // Empty Java properties object
+	
+	/** The comments. */
 	private String comments = "Auto Generated";
+	
+	/** The file name. */
 	private String fileName = "application.properties";
+	
+	/** The logger. */
 	private final Logger logger = LoggerFactory.getLogger(getClass());
 
+	/**
+	 * Instantiates a new base properties.
+	 */
 	public BaseProperties() {
 		loadProperties();
 	}
 	
+	/**
+	 * Instantiates a new base properties.
+	 *
+	 * @param fileName the file name
+	 */
 	public BaseProperties(String fileName) {
 		this.fileName = fileName;
 		loadProperties();
 	}
 
+	/**
+	 * Load properties.
+	 *
+	 * @return the properties
+	 */
 	private Properties loadProperties() {
 		try {
 			FileInputStream fis = new FileInputStream(fileName);
@@ -56,6 +82,9 @@ public class BaseProperties {
 		return props;
 	}
 
+	/**
+	 * Update properties.
+	 */
 	private void updateProperties() {
 		try {
 			FileOutputStream fos = new FileOutputStream(fileName);
@@ -67,7 +96,10 @@ public class BaseProperties {
 		}
 	}
 
-	/** Add or Modify Property list */
+	/** 
+	 * 
+	 * @param properties property map to add to property file
+	 */
 	public void saveProperties(HashMap<String, String> properties) {
 
 		Set<String> keys = properties.keySet();
@@ -80,10 +112,10 @@ public class BaseProperties {
 	}
 
 	/**
-	 * sets the value for a property
+	 * sets the value for a property.
 	 *
-	 * @param key
-	 * @param value
+	 * @param key reference key for property
+	 * @param value property value
 	 */
 	public synchronized void setProperty(String key, String value) {
 		props.setProperty(key, value);
@@ -91,10 +123,10 @@ public class BaseProperties {
 	}
 
 	/**
-	 * Retrieves a property with the specified key
+	 * Retrieves a property with the specified key.
 	 *
-	 * @param key
-	 * @param defaultVal
+	 * @param key target key to retrieve
+	 * @param defaultVal String value default
 	 * @return defaultVal if key does not exist in the property file or returns
 	 *         the appropriate value
 	 */
@@ -103,9 +135,9 @@ public class BaseProperties {
 	}
 
 	/**
-	 * deletes an entry with the specified key
+	 * deletes an entry with the specified key.
 	 *
-	 * @param key
+	 * @param key reference item to remove
 	 */
 	public synchronized void removeProperty(String key) {
 		props.remove(key);
@@ -113,39 +145,43 @@ public class BaseProperties {
 	}
 
 	/**
-	 * 
-	 * @param key
-	 * @param defaultVal
+	 * Gets the int.
+	 *
+	 * @param key reference key
+	 * @param defaultVal value if property is not set
 	 * @return retrieves int from property files
 	 */
-	public Integer getInt(String key, String defaultVal) {
-		return Integer.valueOf(props.getProperty(key, defaultVal));
+	public Integer getInt(String key, Integer defaultVal) {
+		return Integer.valueOf(props.getProperty(key, defaultVal + ""));
 	}
 	
 	/**
-	 * 
-	 * @param key
-	 * @param defaultVal
+	 * Gets the long.
+	 *
+	 * @param key refernce key
+	 * @param defaultVal value if property is not set
 	 * @return retrieves Long from property files
 	 */
-	public Long getLong(String key, String defaultVal) {
-		return Long.valueOf(props.getProperty(key, defaultVal));
+	public Long getLong(String key, Long defaultVal) {
+		return Long.valueOf(props.getProperty(key, defaultVal + ""));
 	}
 	
 	/**
-	 * 
-	 * @param key
-	 * @param defaultVal
+	 * Gets the big decimal.
+	 *
+	 * @param key refernce key
+	 * @param defaultVal value if property is not set
 	 * @return retrieves BigDecimal from property files
 	 */
-	public BigDecimal getBigDecimal(String key, String defaultVal) {
-		return new BigDecimal(props.getProperty(key, defaultVal));
+	public BigDecimal getBigDecimal(String key, BigDecimal defaultVal) {
+		return new BigDecimal(props.getProperty(key, defaultVal + ""));
 	}
 	
 	/**
-	 * 
-	 * @param key
-	 * @param defaultVal
+	 * Gets the double.
+	 *
+	 * @param key the key
+	 * @param defaultVal the default val
 	 * @return retrieves double from property files
 	 */
 	public Double getDouble(String key, String defaultVal) {
@@ -153,9 +189,10 @@ public class BaseProperties {
 	}
 	
 	/**
-	 * 
-	 * @param key
-	 * @param defaultVal
+	 * Gets the float.
+	 *
+	 * @param key the key
+	 * @param defaultVal the default val
 	 * @return retrieves an int from property files
 	 */
 	public Float getFloat(String key, String defaultVal) {
