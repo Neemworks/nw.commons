@@ -5,42 +5,60 @@ import java.util.concurrent.LinkedBlockingQueue;
 
 import nw.commons.NeemClazz;
 
+// TODO: Auto-generated Javadoc
 /**
- * 
- * @author kulgan
+ * The Class LocalBlockingQueue.
  *
- * @param <T>
+ * @author kulgan
+ * @param <T> the generic type
  */
 public class LocalBlockingQueue<T> extends NeemClazz{
 	
+	/** The queue. */
 	protected LinkedBlockingQueue<T> queue;
 	
+	/**
+	 * Instantiates a new local blocking queue.
+	 */
 	public LocalBlockingQueue(){
 		queue = new LinkedBlockingQueue<T>(1000);
 		debug("Queue initialized with default size of 1000");
 	}
 	
+	/**
+	 * Instantiates a new local blocking queue.
+	 *
+	 * @param queueCap the queue cap
+	 */
 	public LocalBlockingQueue(int queueCap){
 		queue = new LinkedBlockingQueue<T>(queueCap);
 		debug("Queue initialized with default size " + queueCap);
 	}
 	
 	/**
-	 * Inserts item to the tail of the queue
-	 * @param item
-	 * @return 
+	 * Inserts item to the tail of the queue.
+	 *
+	 * @param item the item
+	 * @return true, if successful
 	 */
 	public boolean queueItem(T item){
 		debug("Adding item to queue. ItemType: " + item);
 		return queue.add(item);
 	}
 	
+	/**
+	 * Queue items.
+	 *
+	 * @param items the items
+	 * @return true, if successful
+	 */
 	public boolean queueItems(List<T> items){
 		return queue.addAll(items);
 	}
 	
 	/**
-	 * Retrieves and removes the head element in queue
+	 * Retrieves and removes the head element in queue.
+	 *
 	 * @return the head element in the queue
 	 */
 	public T deQueueItem() {
@@ -50,7 +68,8 @@ public class LocalBlockingQueue<T> extends NeemClazz{
 	}
 	
 	/**
-	 * Retrieves and does not remove the head element in queue
+	 * Retrieves and does not remove the head element in queue.
+	 *
 	 * @return the head element in the queue
 	 */
 	public T getHeadItem() {
@@ -58,11 +77,23 @@ public class LocalBlockingQueue<T> extends NeemClazz{
 		return queue.peek();
 	}
 	
+	/**
+	 * Long queue.
+	 *
+	 * @param item the item
+	 * @throws InterruptedException the interrupted exception
+	 */
 	public void longQueue(T item) throws InterruptedException{
 		debug("Adding item to queue, may wait if queue is full. ItemType: " + item);
 		queue.put(item);
 	}
 	
+	/**
+	 * Long deque.
+	 *
+	 * @return the t
+	 * @throws InterruptedException the interrupted exception
+	 */
 	public T longDeque() throws InterruptedException{
 		debug("Retrieving item from queue. May wait if queue is empty");
 		return queue.take();

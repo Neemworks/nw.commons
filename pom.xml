@@ -46,6 +46,16 @@
         </execution>
       </executions>
       </plugin>
+      <plugin>
+      	<groupId>org.apache.maven.plugins</groupId>
+      	<artifactId>maven-javadoc-plugin</artifactId>
+      	<version>2.10.2</version>
+      </plugin>
+      <plugin>
+      	<groupId>org.apache.maven.plugins</groupId>
+      	<artifactId>maven-javadoc-plugin</artifactId>
+      	<version>2.10.2</version>
+      </plugin>
     </plugins>
   </build>
   <dependencies>
@@ -60,4 +70,28 @@
   	<url>http://www.nimworks.com</url>
   </organization>
   <url>http://commons.nimworks.com</url>
+  <description>A commons utility for Neemworks</description>
+  <inceptionYear>2013</inceptionYear>
+  <scm>
+  	<url>https://kulgan@bitbucket.org/neemworks/nw.commons.git</url>
+  	<developerConnection>Ogwara Rowland</developerConnection>
+  	<tag>nw, commons</tag>
+  	<connection>
+  		scm:git:git://kulgan@bitbucket.org/neemworks/nw.commons.git
+  	</connection>
+  </scm>
+  <developers>
+  	<developer>
+  		<name>Ogwara O. Rowland</name>
+  		<organization>Neemworks Nigeria</organization>
+  		<organizationUrl>http://www.nimworks.com</organizationUrl>
+  	</developer>
+  </developers>
+  <licenses>
+  	<license>
+  		<name>The Apache Software License, Version 2.0</name>
+  		<url>http://www.apache.org/licenses/LICENSE-2.0.txt</url>
+     	<distribution>repo</distribution>
+  	</license>
+  </licenses>
 </project>
