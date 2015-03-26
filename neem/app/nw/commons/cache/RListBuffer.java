@@ -4,9 +4,8 @@ import java.util.concurrent.LinkedBlockingQueue;
 
 import nw.commons.NeemClazz;
 
-// TODO: Auto-generated Javadoc
 /**
- * Provides a simple none blocking linked queue. Use with caution
+ * Provides a simple blocking linked queue. Use with caution
  * @author kulgan
  *
  * @param <T> Generic class for item to be used in the queue

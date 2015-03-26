@@ -9,7 +9,6 @@ import nw.commons.cache.PropertiesCache;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-// TODO: Auto-generated Javadoc
 /**
  * Base class providing access to log factory and
  * property files. Eliminates the need to define these items while working. This
@@ -20,18 +19,30 @@ import org.slf4j.LoggerFactory;
  * @since 10th November, 2013
  * 
  */
-public class NeemClazz {
+public abstract class NeemClazz {
     
     /** logger. */
     protected Logger logger = LoggerFactory.getLogger(getClass());
     
-    /** The debug mode on. */
+    /** Enables or disables debug mode on. */
     private static boolean debugModeOn;
+    
+    /**
+     * Specifies the name of the properties file to use
+     */
+    private String targetPropertyFilename = "application.properties";
 
     /**
      * Default Properties file manipulations (application.properties)
      */
-    protected BaseProperties appProps = PropertiesCache.getPropertyFile();
+    protected AppProperties appProps;
+    
+    /**
+     * Initialization
+     */
+    public NeemClazz(){
+    	appProps = PropertiesCache.getPropertyFile(getTargetPropertyFilename());
+    }
     
     
     /**
@@ -113,6 +124,16 @@ public class NeemClazz {
 	 */
 	public void setDebugModeOn(boolean debugModeOn) {
 		NeemClazz.debugModeOn = debugModeOn;
+	}
+
+
+	public String getTargetPropertyFilename() {
+		return targetPropertyFilename;
+	}
+
+
+	public void setTargetPropertyFilename(String targetPropertyFilename) {
+		this.targetPropertyFilename = targetPropertyFilename;
 	}
 
 }

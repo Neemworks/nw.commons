@@ -18,7 +18,6 @@ import java.util.Set;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-// TODO: Auto-generated Javadoc
 /**
  *
  * Provides a means of manipulating property files used by the project,
@@ -31,25 +30,25 @@ import org.slf4j.LoggerFactory;
  *
  */
 
-public class BaseProperties {
+public class AppProperties {
 
-	/** The props. */
+	/** The referenced properties file. */
 	private Properties props = new Properties(); // Empty Java properties object
 	
-	/** The comments. */
-	private String comments = "Auto Generated";
+	/** Optional comments attached to the property file. */
+	private String comments = "Auto Generated Property File";
 	
-	/** The file name. */
+	/** The property file name. Defaults to <b>application.properties</b> */
 	private String fileName = "application.properties";
 	
 	/** The logger. */
 	private final Logger logger = LoggerFactory.getLogger(getClass());
 
 	/**
-	 * Instantiates a new base properties.
+	 * Instantiates a new base properties, using the default property file name.
 	 */
-	public BaseProperties() {
-		loadProperties();
+	public AppProperties() {
+		this("application.properties");
 	}
 	
 	/**
@@ -57,7 +56,7 @@ public class BaseProperties {
 	 *
 	 * @param fileName the file name
 	 */
-	public BaseProperties(String fileName) {
+	public AppProperties(String fileName) {
 		this.fileName = fileName;
 		loadProperties();
 	}
@@ -74,7 +73,7 @@ public class BaseProperties {
 
 			fis.close();
 		} catch (FileNotFoundException e) {
-			updateProperties();
+			createProperties();
 			logger.error(e.getMessage());
 		} catch (IOException e) {
 			logger.error(e.getMessage());
@@ -83,9 +82,9 @@ public class BaseProperties {
 	}
 
 	/**
-	 * Update properties.
+	 * Creates a blank properties file.
 	 */
-	private void updateProperties() {
+	private void createProperties() {
 		try {
 			FileOutputStream fos = new FileOutputStream(fileName);
 			props.store(fos, comments);
@@ -108,7 +107,7 @@ public class BaseProperties {
 			String key = itr.next();
 			props.setProperty(key, properties.get(key));
 		}
-		updateProperties();
+		createProperties();
 	}
 
 	/**
@@ -119,7 +118,7 @@ public class BaseProperties {
 	 */
 	public synchronized void setProperty(String key, String value) {
 		props.setProperty(key, value);
-		updateProperties();
+		createProperties();
 	}
 
 	/**
@@ -141,7 +140,7 @@ public class BaseProperties {
 	 */
 	public synchronized void removeProperty(String key) {
 		props.remove(key);
-		updateProperties();
+		createProperties();
 	}
 
 	/**
@@ -184,8 +183,8 @@ public class BaseProperties {
 	 * @param defaultVal the default val
 	 * @return retrieves double from property files
 	 */
-	public Double getDouble(String key, String defaultVal) {
-		return Double.valueOf(props.getProperty(key, defaultVal));
+	public Double getDouble(String key, Double defaultVal) {
+		return Double.valueOf(props.getProperty(key, defaultVal + ""));
 	}
 	
 	/**
@@ -195,7 +194,7 @@ public class BaseProperties {
 	 * @param defaultVal the default val
 	 * @return retrieves an int from property files
 	 */
-	public Float getFloat(String key, String defaultVal) {
-		return Float.valueOf(props.getProperty(key, defaultVal));
+	public Float getFloat(String key, Float defaultVal) {
+		return Float.valueOf(props.getProperty(key, defaultVal + ""));
 	}
 }

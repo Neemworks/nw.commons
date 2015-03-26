@@ -2,7 +2,7 @@
   <modelVersion>4.0.0</modelVersion>
   <groupId>com.nimworks</groupId>
   <artifactId>nw.commons</artifactId>
-  <version>1.1</version>
+  <version>1.2</version>
   <name>nw.commons</name>
   <distributionManagement>
 	  <snapshotRepository>

@@ -3,7 +3,7 @@ package nw.commons.util;
 import nw.commons.NeemClazz;
 
 /**
- * Various utility operations using threads
+ * Utility operations using threads
  * @author kulgan
  *
  */

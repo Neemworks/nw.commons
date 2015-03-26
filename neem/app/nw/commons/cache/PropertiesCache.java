@@ -3,7 +3,7 @@ package nw.commons.cache;
 import java.util.concurrent.ConcurrentHashMap;
 
 import nw.commons.NeemClazz;
-import nw.commons.BaseProperties;
+import nw.commons.AppProperties;
 
 // TODO: Auto-generated Javadoc
 /**
@@ -12,7 +12,7 @@ import nw.commons.BaseProperties;
 public class PropertiesCache extends NeemClazz{
 	
 	/** The pties. */
-	private static ConcurrentHashMap<String, BaseProperties> pties = new ConcurrentHashMap<String, BaseProperties>();
+	private static ConcurrentHashMap<String, AppProperties> pties = new ConcurrentHashMap<String, AppProperties>();
 
 	/**
 	 * Gets the property file.
@@ -20,10 +20,10 @@ public class PropertiesCache extends NeemClazz{
 	 * @param file the file
 	 * @return the property file
 	 */
-	public static BaseProperties getPropertyFile(String file) {
-		BaseProperties pf = pties.get(file);
+	public static AppProperties getPropertyFile(String file) {
+		AppProperties pf = pties.get(file);
 		if(pf == null){
-			pf = new BaseProperties(file);
+			pf = new AppProperties(file);
 			pties.put(file, pf);
 		}
 		return pf;
@@ -34,11 +34,11 @@ public class PropertiesCache extends NeemClazz{
 	 *
 	 * @return the property file
 	 */
-	public static BaseProperties getPropertyFile() {
+	public static AppProperties getPropertyFile() {
 		String file = "application.properties";
-		BaseProperties pf = pties.get(file);
+		AppProperties pf = pties.get(file);
 		if(pf == null){
-			pf = new BaseProperties(file);
+			pf = new AppProperties(file);
 			pties.put(file, pf);
 		}
 		return pf;
