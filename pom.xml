@@ -2,7 +2,7 @@
   <modelVersion>4.0.0</modelVersion>
   <groupId>com.nimworks</groupId>
   <artifactId>nw.commons</artifactId>
-  <version>1.2.1-Beta1</version>
+  <version>1.2.1-Final</version>
   <name>nw.commons</name>
   <distributionManagement>
 	  <snapshotRepository>
@@ -69,6 +69,7 @@
   		<groupId>junit</groupId>
   		<artifactId>junit</artifactId>
   		<version>4.12</version>
+  		<scope>test</scope>
   	</dependency>
   </dependencies>
   <organization>
