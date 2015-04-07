@@ -1,11 +1,22 @@
 /*
- * Property of Neemworks Nigeria 
- * Copyright 2013 - 2015, all rights reserved
+ * Copyright 2013 - 2015, Neemworks Nigeria <dev@nimworks.com>
+ Permission to use, copy, modify, and distribute this software for any
+ purpose with or without fee is hereby granted, provided that the above
+ copyright notice and this permission notice appear in all copies.
+
+ THE SOFTWARE IS PROVIDED "AS IS" AND THE AUTHOR DISCLAIMS ALL WARRANTIES
+ WITH REGARD TO THIS SOFTWARE INCLUDING ALL IMPLIED WARRANTIES OF
+ MERCHANTABILITY AND FITNESS. IN NO EVENT SHALL THE AUTHOR BE LIABLE FOR
+ ANY SPECIAL, DIRECT, INDIRECT, OR CONSEQUENTIAL DAMAGES OR ANY DAMAGES
+ WHATSOEVER RESULTING FROM LOSS OF USE, DATA OR PROFITS, WHETHER IN AN
+ ACTION OF CONTRACT, NEGLIGENCE OR OTHER TORTIOUS ACTION, ARISING OUT OF
+ OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
  */
 package nw.commons;
 
-import java.io.IOException;
 import java.io.UnsupportedEncodingException;
+
+import javax.xml.bind.DatatypeConverter;
 
 // TODO: Auto-generated Javadoc
 /**
@@ -25,7 +36,8 @@ public class RCoder {
 	 * @throws UnsupportedEncodingException the unsupported encoding exception
 	 */
 	public String encode(String text) throws UnsupportedEncodingException {
-		return text;//TODO
+		String encText = new String(DatatypeConverter.printBase64Binary(new String(text).getBytes("UTF-8")));
+		return encText;
 	}
 
 	/**
@@ -33,10 +45,15 @@ public class RCoder {
 	 *
 	 * @param coded            <i> Base 64 encoded string </i>
 	 * @return plain text string
-	 * @throws IOException Signals that an I/O exception has occurred.
 	 */
-	public String decode(String coded) throws IOException {
-		return coded;//TODO
+	public String decode(String coded) {
+		String decText = new String(DatatypeConverter.parseBase64Binary(coded));
+		return decText;
 	}
+
+	public static void main(String a[]) throws UnsupportedEncodingException{
+		RCoder coder = new RCoder();
+	      System.out.println(coder.encode("openminds"));
+	   }
 
 }

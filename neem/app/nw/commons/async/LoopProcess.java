@@ -1,3 +1,17 @@
+/*
+ * Copyright 2013 - 2015, Neemworks Nigeria <dev@nimworks.com>
+ Permission to use, copy, modify, and distribute this software for any
+ purpose with or without fee is hereby granted, provided that the above
+ copyright notice and this permission notice appear in all copies.
+
+ THE SOFTWARE IS PROVIDED "AS IS" AND THE AUTHOR DISCLAIMS ALL WARRANTIES
+ WITH REGARD TO THIS SOFTWARE INCLUDING ALL IMPLIED WARRANTIES OF
+ MERCHANTABILITY AND FITNESS. IN NO EVENT SHALL THE AUTHOR BE LIABLE FOR
+ ANY SPECIAL, DIRECT, INDIRECT, OR CONSEQUENTIAL DAMAGES OR ANY DAMAGES
+ WHATSOEVER RESULTING FROM LOSS OF USE, DATA OR PROFITS, WHETHER IN AN
+ ACTION OF CONTRACT, NEGLIGENCE OR OTHER TORTIOUS ACTION, ARISING OUT OF
+ OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
+ */
 package nw.commons.async;
 
 import java.util.UUID;
@@ -10,11 +24,11 @@ import nw.commons.enums.ProcessState;
  * Basic signature of a loop process. A process that repeats a particular action
  * (the process method) infinitely while sleeping for (sleepTime) milliseconds.
  * The process can be paused and unpaused and even stopped using the processState attribute
- * @author kulgan
+ * @author Ogwara O. Rowland
  *
  */
 public abstract class LoopProcess extends NeemClazz implements Runnable{
-	
+
 	private Long sleepTime = 1L;
 	private String processId;
 	private ProcessState processState = ProcessState.ACTIVE;
@@ -46,7 +60,7 @@ public abstract class LoopProcess extends NeemClazz implements Runnable{
 	public void setSleepTime(Long sleepTime) {
 		this.sleepTime = sleepTime;
 	}
-	
+
 	private final void doWork(){
 		if(processState == ProcessState.PAUSE){
 			pauseProcess();
@@ -54,10 +68,10 @@ public abstract class LoopProcess extends NeemClazz implements Runnable{
 		process();
 	}
 
-	
+
 	/**
 	 * Pauses the current process until the resume method is called
-	 * 
+	 *
 	 */
 	private final void pauseProcess() {
 		synchronized (this) {
@@ -71,7 +85,7 @@ public abstract class LoopProcess extends NeemClazz implements Runnable{
 		}
 
 	}
-	
+
 	/**
 	 * resumes the current process
 	 */
@@ -82,7 +96,7 @@ public abstract class LoopProcess extends NeemClazz implements Runnable{
 			this.notify();
 		}
 	}
-	
+
 	private void sleep(){
 		try {
 			Thread.sleep(getSleepTime());
@@ -103,6 +117,10 @@ public abstract class LoopProcess extends NeemClazz implements Runnable{
 		this.processState = processState;
 	}
 
+	/**
+	 *
+	 * @return the processId for this task
+	 */
 	public String getProcessId() {
 		return processId;
 	}

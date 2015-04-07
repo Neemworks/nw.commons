@@ -1,28 +1,25 @@
-/*
- * Property of Neemworks Nigeria 
- * Copyright 2013 - 2015, all rights reserved
+/** Copyright (c) 2006 Damien Miller <djm@mindrot.org>
+
+ Permission to use, copy, modify, and distribute this software for any
+ purpose with or without fee is hereby granted, provided that the above
+ copyright notice and this permission notice appear in all copies.
+
+ THE SOFTWARE IS PROVIDED "AS IS" AND THE AUTHOR DISCLAIMS ALL WARRANTIES
+ WITH REGARD TO THIS SOFTWARE INCLUDING ALL IMPLIED WARRANTIES OF
+ MERCHANTABILITY AND FITNESS. IN NO EVENT SHALL THE AUTHOR BE LIABLE FOR
+ ANY SPECIAL, DIRECT, INDIRECT, OR CONSEQUENTIAL DAMAGES OR ANY DAMAGES
+ WHATSOEVER RESULTING FROM LOSS OF USE, DATA OR PROFITS, WHETHER IN AN
+ ACTION OF CONTRACT, NEGLIGENCE OR OTHER TORTIOUS ACTION, ARISING OUT OF
+ OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
  */
 package nw.commons;
 
-// Copyright (c) 2006 Damien Miller <djm@mindrot.org>
-//
-// Permission to use, copy, modify, and distribute this software for any
-// purpose with or without fee is hereby granted, provided that the above
-// copyright notice and this permission notice appear in all copies.
-//
-// THE SOFTWARE IS PROVIDED "AS IS" AND THE AUTHOR DISCLAIMS ALL WARRANTIES
-// WITH REGARD TO THIS SOFTWARE INCLUDING ALL IMPLIED WARRANTIES OF
-// MERCHANTABILITY AND FITNESS. IN NO EVENT SHALL THE AUTHOR BE LIABLE FOR
-// ANY SPECIAL, DIRECT, INDIRECT, OR CONSEQUENTIAL DAMAGES OR ANY DAMAGES
-// WHATSOEVER RESULTING FROM LOSS OF USE, DATA OR PROFITS, WHETHER IN AN
-// ACTION OF CONTRACT, NEGLIGENCE OR OTHER TORTIOUS ACTION, ARISING OUT OF
-// OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
+
 
 import java.io.UnsupportedEncodingException;
 
 import java.security.SecureRandom;
 
-// TODO: Auto-generated Javadoc
 /**
  * BCrypt implements OpenBSD-style Blowfish password hashing using the scheme
  * described in "A Future-Adaptable Password Scheme" by Niels Provos and David
@@ -69,7 +66,7 @@ public class BCrypt {
 	// BCrypt parameters
 	/** The Constant GENSALT_DEFAULT_LOG2_ROUNDS. */
 	private static final int GENSALT_DEFAULT_LOG2_ROUNDS = 10;
-	
+
 	/** The Constant BCRYPT_SALT_LEN. */
 	private static final int BCRYPT_SALT_LEN = 16;
 
@@ -83,7 +80,7 @@ public class BCrypt {
 			0x03707344, 0xa4093822, 0x299f31d0, 0x082efa98, 0xec4e6c89,
 			0x452821e6, 0x38d01377, 0xbe5466cf, 0x34e90c6c, 0xc0ac29b7,
 			0xc97c50dd, 0x3f84d5b5, 0xb5470917, 0x9216d5d9, 0x8979fb1b };
-	
+
 	/** The Constant S_orig. */
 	private static final int S_orig[] = { 0xd1310ba6, 0x98dfb5ac, 0x2ffd72db,
 			0xd01adfb7, 0xb8e1afed, 0x6a267e96, 0xba7c9045, 0xf12c7f99,
@@ -320,7 +317,7 @@ public class BCrypt {
 	// Expanded Blowfish key
 	/** The p. */
 	private int P[];
-	
+
 	/** The s. */
 	private int S[];
 

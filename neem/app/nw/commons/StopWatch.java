@@ -1,10 +1,19 @@
 /*
- * Property of Neemworks Nigeria 
- * Copyright 2013 - 2015, all rights reserved
+ * Copyright 2013 - 2015, Neemworks Nigeria <dev@nimworks.com>
+ Permission to use, copy, modify, and distribute this software for any
+ purpose with or without fee is hereby granted, provided that the above
+ copyright notice and this permission notice appear in all copies.
+
+ THE SOFTWARE IS PROVIDED "AS IS" AND THE AUTHOR DISCLAIMS ALL WARRANTIES
+ WITH REGARD TO THIS SOFTWARE INCLUDING ALL IMPLIED WARRANTIES OF
+ MERCHANTABILITY AND FITNESS. IN NO EVENT SHALL THE AUTHOR BE LIABLE FOR
+ ANY SPECIAL, DIRECT, INDIRECT, OR CONSEQUENTIAL DAMAGES OR ANY DAMAGES
+ WHATSOEVER RESULTING FROM LOSS OF USE, DATA OR PROFITS, WHETHER IN AN
+ ACTION OF CONTRACT, NEGLIGENCE OR OTHER TORTIOUS ACTION, ARISING OUT OF
+ OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
  */
 package nw.commons;
 
-// TODO: Auto-generated Javadoc
 /**
  * Basic Utility for monitoring time spent by code.
  *
@@ -13,18 +22,18 @@ package nw.commons;
  */
 
 public class StopWatch {
-	
+
 	/** The start time. */
 	private long startTime;
-	
+
 	/** The total time spent. */
 	private long total;
-	
+
 	/** is the stopwatch running. */
 	boolean running = false;
 
 	/**
-	 * Instantiates a new stop watch.
+	 * Instantiates a new stop watch. Counting starts automatically
 	 */
 	public StopWatch() {
 		this(true);
@@ -33,12 +42,12 @@ public class StopWatch {
 	/**
 	 * Instantiates a new stop watch.
 	 *
-	 * @param paramBoolean
-	 *            the param boolean specifies whether the stopwatch should be started
+	 * @param start
+	 *            Specifies whether the stopwatch should be started
 	 *            or not
 	 */
-	public StopWatch(boolean paramBoolean) {
-		if (paramBoolean)
+	public StopWatch(boolean start) {
+		if (start)
 			start();
 	}
 
@@ -59,8 +68,9 @@ public class StopWatch {
 	 * @return the long
 	 */
 	public long currentElapsedTime() {
-		if (this.running)
+		if (this.running){
 			return System.currentTimeMillis() - this.startTime;
+		}
 		return 0L;
 	}
 

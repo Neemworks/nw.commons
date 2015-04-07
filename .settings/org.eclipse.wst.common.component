@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?><project-modules id="moduleCoreId" project-version="1.5.0">
     <wb-module deploy-name="nw.commons">
         <wb-resource deploy-path="/" source-path="/neem/app"/>
+        <wb-resource deploy-path="/" source-path="/neem/test"/>
     </wb-module>
 </project-modules>

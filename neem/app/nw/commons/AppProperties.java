@@ -1,6 +1,16 @@
 /*
- * Property of Neemworks Nigeria 
- * Copyright 2013 - 2015, all rights reserved
+ * Copyright 2013 - 2015, Neemworks Nigeria <dev@nimworks.com>
+ Permission to use, copy, modify, and distribute this software for any
+ purpose with or without fee is hereby granted, provided that the above
+ copyright notice and this permission notice appear in all copies.
+
+ THE SOFTWARE IS PROVIDED "AS IS" AND THE AUTHOR DISCLAIMS ALL WARRANTIES
+ WITH REGARD TO THIS SOFTWARE INCLUDING ALL IMPLIED WARRANTIES OF
+ MERCHANTABILITY AND FITNESS. IN NO EVENT SHALL THE AUTHOR BE LIABLE FOR
+ ANY SPECIAL, DIRECT, INDIRECT, OR CONSEQUENTIAL DAMAGES OR ANY DAMAGES
+ WHATSOEVER RESULTING FROM LOSS OF USE, DATA OR PROFITS, WHETHER IN AN
+ ACTION OF CONTRACT, NEGLIGENCE OR OTHER TORTIOUS ACTION, ARISING OUT OF
+ OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
  */
 
 package nw.commons;
@@ -24,7 +34,7 @@ import org.slf4j.LoggerFactory;
  * automatically creates a property file if it does not see one in application
  * root folder. Only a single instance of the class is expected to exists
  *
- * @author Ogwara O. Rowland (r.ogwara@nimworks.com)
+ * @author Ogwara O. Rowland
  * @version 0.3
  * @since 10th November, 2013
  *
@@ -34,13 +44,13 @@ public class AppProperties {
 
 	/** The referenced properties file. */
 	private Properties props = new Properties(); // Empty Java properties object
-	
+
 	/** Optional comments attached to the property file. */
 	private String comments = "Auto Generated Property File";
-	
+
 	/** The property file name. Defaults to <b>application.properties</b> */
 	private String fileName = "application.properties";
-	
+
 	/** The logger. */
 	private final Logger logger = LoggerFactory.getLogger(getClass());
 
@@ -50,7 +60,7 @@ public class AppProperties {
 	public AppProperties() {
 		this("application.properties");
 	}
-	
+
 	/**
 	 * Instantiates a new base properties.
 	 *
@@ -95,8 +105,8 @@ public class AppProperties {
 		}
 	}
 
-	/** 
-	 * 
+	/**
+	 *
 	 * @param properties property map to add to property file
 	 */
 	public void saveProperties(HashMap<String, String> properties) {
@@ -153,7 +163,7 @@ public class AppProperties {
 	public Integer getInt(String key, Integer defaultVal) {
 		return Integer.valueOf(props.getProperty(key, defaultVal + ""));
 	}
-	
+
 	/**
 	 * Gets the long.
 	 *
@@ -164,7 +174,7 @@ public class AppProperties {
 	public Long getLong(String key, Long defaultVal) {
 		return Long.valueOf(props.getProperty(key, defaultVal + ""));
 	}
-	
+
 	/**
 	 * Gets the big decimal.
 	 *
@@ -175,7 +185,7 @@ public class AppProperties {
 	public BigDecimal getBigDecimal(String key, BigDecimal defaultVal) {
 		return new BigDecimal(props.getProperty(key, defaultVal + ""));
 	}
-	
+
 	/**
 	 * Gets the double.
 	 *
@@ -186,7 +196,7 @@ public class AppProperties {
 	public Double getDouble(String key, Double defaultVal) {
 		return Double.valueOf(props.getProperty(key, defaultVal + ""));
 	}
-	
+
 	/**
 	 * Gets the float.
 	 *
@@ -196,5 +206,16 @@ public class AppProperties {
 	 */
 	public Float getFloat(String key, Float defaultVal) {
 		return Float.valueOf(props.getProperty(key, defaultVal + ""));
+	}
+
+	/**
+	 * Gets the boolean property for specified key.
+	 *
+	 * @param key the property key
+	 * @param defaultVal the default value if nothing is found
+	 * @return the bool value for the target key
+	 */
+	public Boolean getBool(String key, Boolean defaultVal){
+		return Boolean.valueOf(props.getProperty(key, defaultVal.toString()));
 	}
 }

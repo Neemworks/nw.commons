@@ -1,6 +1,16 @@
 /*
- * Property of Neemworks Nigeria 
- * Copyright 2013 - 2015, all rights reserved
+ * Copyright 2013 - 2015, Neemworks Nigeria <dev@nimworks.com>
+ Permission to use, copy, modify, and distribute this software for any
+ purpose with or without fee is hereby granted, provided that the above
+ copyright notice and this permission notice appear in all copies.
+
+ THE SOFTWARE IS PROVIDED "AS IS" AND THE AUTHOR DISCLAIMS ALL WARRANTIES
+ WITH REGARD TO THIS SOFTWARE INCLUDING ALL IMPLIED WARRANTIES OF
+ MERCHANTABILITY AND FITNESS. IN NO EVENT SHALL THE AUTHOR BE LIABLE FOR
+ ANY SPECIAL, DIRECT, INDIRECT, OR CONSEQUENTIAL DAMAGES OR ANY DAMAGES
+ WHATSOEVER RESULTING FROM LOSS OF USE, DATA OR PROFITS, WHETHER IN AN
+ ACTION OF CONTRACT, NEGLIGENCE OR OTHER TORTIOUS ACTION, ARISING OUT OF
+ OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
  */
 package nw.commons;
 
@@ -13,20 +23,20 @@ import org.slf4j.LoggerFactory;
  * Base class providing access to log factory and
  * property files. Eliminates the need to define these items while working. This
  * class is meant to be extended
- * 
- * @author Ogwara O. Rowland (r.ogwara@nimworks.com)
+ *
+ * @author Ogwara O. Rowland
  * @version 0.2
  * @since 10th November, 2013
- * 
+ *
  */
 public abstract class NeemClazz {
-    
+
     /** logger. */
     protected Logger logger = LoggerFactory.getLogger(getClass());
-    
+
     /** Enables or disables debug mode on. */
     private static boolean debugModeOn;
-    
+
     /**
      * Specifies the name of the properties file to use
      */
@@ -36,15 +46,15 @@ public abstract class NeemClazz {
      * Default Properties file manipulations (application.properties)
      */
     protected AppProperties appProps;
-    
+
     /**
      * Initialization
      */
     public NeemClazz(){
     	appProps = PropertiesCache.getPropertyFile(getTargetPropertyFilename());
     }
-    
-    
+
+
     /**
      * Debug.
      *
@@ -55,7 +65,7 @@ public abstract class NeemClazz {
     		logger.debug(msg);
     	}
     }
-    
+
     /**
      * static debug logging.
      *
@@ -65,7 +75,7 @@ public abstract class NeemClazz {
     protected static void sd(Class<? extends NeemClazz> clz, String msg){
     	LoggerFactory.getLogger(clz).debug(msg);
     }
-    
+
     /**
      * static info logging.
      *
@@ -75,7 +85,7 @@ public abstract class NeemClazz {
     protected static void si(Class<? extends NeemClazz> clz, String msg){
     	LoggerFactory.getLogger(clz).info(msg);
     }
-    
+
     /**
      * static trace logging.
      *
@@ -85,7 +95,7 @@ public abstract class NeemClazz {
     protected static void st(Class<? extends NeemClazz> clz, String msg){
     	LoggerFactory.getLogger(clz).trace(msg);
     }
-    
+
     /**
      * static warn logging.
      *
@@ -96,7 +106,7 @@ public abstract class NeemClazz {
     protected static void sd(Class<? extends NeemClazz> clz, String msg, Throwable t){
     	LoggerFactory.getLogger(clz).warn(msg, t);
     }
-    
+
     /**
      * static error logging.
      *
