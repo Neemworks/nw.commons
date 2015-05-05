@@ -20,9 +20,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 /**
- * Base class providing access to log factory and
- * property files. Eliminates the need to define these items while working. This
- * class is meant to be extended
+ * Base class that includes logger and property file access
  *
  * @author Ogwara O. Rowland
  * @version 0.2
@@ -31,14 +29,14 @@ import org.slf4j.LoggerFactory;
  */
 public abstract class NeemClazz {
 
-    /** logger. */
+    /** simple slf4j logger. */
     protected Logger logger = LoggerFactory.getLogger(getClass());
 
     /** Enables or disables debug mode on. */
     private static boolean debugModeOn;
 
     /**
-     * Specifies the name of the properties file to use
+     * Property file name
      */
     private String targetPropertyFilename = "application.properties";
 

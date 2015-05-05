@@ -1,4 +1,4 @@
-/* 
+/*
  * Copyright 2013 - 2015, Neemworks Nigeria <dev@nimworks.com>
  Permission to use, copy, modify, and distribute this software for any
  purpose with or without fee is hereby granted, provided that the above
@@ -18,7 +18,6 @@ import java.util.List;
 import java.util.concurrent.ConcurrentLinkedQueue;
 import nw.commons.NeemClazz;
 
-// TODO: Auto-generated Javadoc
 /**
  * Simple queue Implementation.
  *
@@ -26,10 +25,10 @@ import nw.commons.NeemClazz;
  * @param <T> object in queue
  */
 public class LocalQueue<T> extends NeemClazz{
-	
+
 	/** The queue. */
 	protected ConcurrentLinkedQueue<T> queue;
-	
+
 	/**
 	 * Instantiates a new local queue.
 	 */
@@ -37,8 +36,8 @@ public class LocalQueue<T> extends NeemClazz{
 		queue = new ConcurrentLinkedQueue<T>();
 		debug("Queue successfully initialized.");
 	}
-	
-	
+
+
 	/**
 	 * Inserts item to the tail of the queue.
 	 *
@@ -48,7 +47,7 @@ public class LocalQueue<T> extends NeemClazz{
 	public boolean queueItem(T item){
 		return queue.add(item);
 	}
-	
+
 	/**
 	 * Inserts a list of items into the queue.
 	 *
@@ -58,7 +57,7 @@ public class LocalQueue<T> extends NeemClazz{
 	public boolean queueItems(List<T> items){
 		return queue.addAll(items);
 	}
-	
+
 	/**
 	 * Retrieves and removes the head element in queue.
 	 *
@@ -69,7 +68,7 @@ public class LocalQueue<T> extends NeemClazz{
 		debug("Retrieved item from queue. ItemType: " + poll);
 		return poll;
 	}
-	
+
 	/**
 	 * Retrieves and does not remove the head element in queue.
 	 *

@@ -18,42 +18,41 @@ import java.io.UnsupportedEncodingException;
 
 import javax.xml.bind.DatatypeConverter;
 
-// TODO: Auto-generated Javadoc
 /**
- * The Class RCoder.
+ * The utility class for base encoding and decoding
  *
  * @author Ogwara O. Rowland
- * @version 0.1
- * @since 14th May, 2013
  */
-public class RCoder {
+public class RCoder extends NeemClazz{
 
 	/**
-	 * Encode.
+	 * Encodes a plain text to base 64.
 	 *
-	 * @param text            <i> Plain string to be encoded </i>
+	 * @param text <i> Plain string to be encoded </i>
 	 * @return Base64 encoded string
 	 * @throws UnsupportedEncodingException the unsupported encoding exception
 	 */
-	public String encode(String text) throws UnsupportedEncodingException {
-		String encText = new String(DatatypeConverter.printBase64Binary(new String(text).getBytes("UTF-8")));
+	public String base64encode(String text) {
+
+		String encText = null;
+		try {
+			encText = new String(DatatypeConverter.printBase64Binary(text.getBytes("UTF-8")));
+		} catch (UnsupportedEncodingException e) {
+			logger.error("Exception ", e);
+			throw new IllegalArgumentException("Provided encoding is unknown");
+		}
 		return encText;
 	}
 
 	/**
-	 * Decode.
+	 * Decodes a base 64 text to plain text.
 	 *
-	 * @param coded            <i> Base 64 encoded string </i>
+	 * @param coded <i> Base 64 encoded string </i>
 	 * @return plain text string
 	 */
-	public String decode(String coded) {
+	public String base64decode(String coded) {
 		String decText = new String(DatatypeConverter.parseBase64Binary(coded));
 		return decText;
 	}
-
-	public static void main(String a[]) throws UnsupportedEncodingException{
-		RCoder coder = new RCoder();
-	      System.out.println(coder.encode("openminds"));
-	   }
 
 }

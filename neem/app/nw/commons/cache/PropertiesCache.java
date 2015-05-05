@@ -16,19 +16,18 @@ package nw.commons.cache;
 
 import java.util.concurrent.ConcurrentHashMap;
 
-import nw.commons.NeemClazz;
 import nw.commons.AppProperties;
 
 /**
  * The Class PropertiesCache.
  */
-public class PropertiesCache extends NeemClazz{
+public class PropertiesCache {
 
-	/** The pties. */
+	/** The hashmap of referenced property files. */
 	private static ConcurrentHashMap<String, AppProperties> pties = new ConcurrentHashMap<String, AppProperties>();
 
 	/**
-	 * Gets the property file.
+	 * Retrieves the property object by name
 	 *
 	 * @param file the file
 	 * @return the property file
@@ -43,7 +42,7 @@ public class PropertiesCache extends NeemClazz{
 	}
 
 	/**
-	 * Gets the property file.
+	 * Retrieves the default property object
 	 *
 	 * @return the property file
 	 */

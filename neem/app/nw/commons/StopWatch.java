@@ -15,7 +15,7 @@
 package nw.commons;
 
 /**
- * Basic Utility for monitoring time spent by code.
+ * StopWatch utility class. convenient for debugging
  *
  * @author Ogwara O. Rowland
  * @version 1.0
@@ -30,7 +30,7 @@ public class StopWatch {
 	private long total;
 
 	/** is the stopwatch running. */
-	boolean running = false;
+	private boolean running = false;
 
 	/**
 	 * Instantiates a new stop watch. Counting starts automatically
@@ -47,8 +47,9 @@ public class StopWatch {
 	 *            or not
 	 */
 	public StopWatch(boolean start) {
-		if (start)
+		if (start){
 			start();
+		}
 	}
 
 	/**
