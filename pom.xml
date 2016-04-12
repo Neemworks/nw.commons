@@ -2,7 +2,6 @@
   <modelVersion>4.0.0</modelVersion>
   <groupId>com.nimworks</groupId>
   <artifactId>nw.commons</artifactId>
-  <version>1.2.2-Final</version>
   <name>nw.commons</name>
   <distributionManagement>
 	  <snapshotRepository>
@@ -11,8 +10,6 @@
 	  </snapshotRepository>
 	</distributionManagement>
   <build>
-    <sourceDirectory>neem/app</sourceDirectory>
-    <testSourceDirectory>neem/test</testSourceDirectory>
     <plugins>
       <plugin>
         <artifactId>maven-compiler-plugin</artifactId>
@@ -85,14 +82,6 @@
   <url>http://commons.nimworks.com</url>
   <description>A commons utility for Neemworks</description>
   <inceptionYear>2013</inceptionYear>
-  <scm>
-  	<url>https://kulgan@bitbucket.org/neemworks/nw.commons.git</url>
-  	<developerConnection>Ogwara Rowland</developerConnection>
-  	<tag>nw, commons</tag>
-  	<connection>
-  		scm:git:git://kulgan@bitbucket.org/neemworks/nw.commons.git
-  	</connection>
-  </scm>
   <developers>
   	<developer>
   		<name>Ogwara O. Rowland</name>
@@ -107,4 +96,5 @@
      	<distribution>repo</distribution>
   	</license>
   </licenses>
+  <version>2.0.0-b1</version>
 </project>
