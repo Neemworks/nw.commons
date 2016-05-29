@@ -16,7 +16,7 @@ package nw.commons.cache;
 
 import java.util.concurrent.ConcurrentHashMap;
 
-import nw.commons.AppProperties;
+import nw.commons.props.KeyProperties;
 
 /**
  * The Class PropertiesCache.
@@ -24,7 +24,7 @@ import nw.commons.AppProperties;
 public class PropertiesCache {
 
 	/** The hashmap of referenced property files. */
-	private static ConcurrentHashMap<String, AppProperties> pties = new ConcurrentHashMap<String, AppProperties>();
+	private static ConcurrentHashMap<String, KeyProperties> pties = new ConcurrentHashMap<String, KeyProperties>();
 
 	/**
 	 * Retrieves the property object by name
@@ -32,10 +32,10 @@ public class PropertiesCache {
 	 * @param file the file
 	 * @return the property file
 	 */
-	public static AppProperties getPropertyFile(String file) {
-		AppProperties pf = pties.get(file);
+	public static KeyProperties getPropertyFile(String file) {
+		KeyProperties pf = pties.get(file);
 		if(pf == null){
-			pf = new AppProperties(file);
+			pf = new KeyProperties(file);
 			pties.put(file, pf);
 		}
 		return pf;
@@ -46,11 +46,11 @@ public class PropertiesCache {
 	 *
 	 * @return the property file
 	 */
-	public static AppProperties getPropertyFile() {
+	public static KeyProperties getPropertyFile() {
 		String file = "application.properties";
-		AppProperties pf = pties.get(file);
+		KeyProperties pf = pties.get(file);
 		if(pf == null){
-			pf = new AppProperties(file);
+			pf = new KeyProperties(file);
 			pties.put(file, pf);
 		}
 		return pf;

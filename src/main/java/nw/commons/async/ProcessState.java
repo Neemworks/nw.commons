@@ -1,4 +1,4 @@
-/* 
+/*
  * Copyright 2013 - 2015, Neemworks Nigeria <dev@nimworks.com>
  Permission to use, copy, modify, and distribute this software for any
  purpose with or without fee is hereby granted, provided that the above
@@ -12,34 +12,13 @@
  ACTION OF CONTRACT, NEGLIGENCE OR OTHER TORTIOUS ACTION, ARISING OUT OF
  OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
  */
-package nw.commons.dispatch;
+package nw.commons.async;
 
-import javax.xml.bind.annotation.XmlElement;
-import javax.xml.bind.annotation.XmlRootElement;
+public enum ProcessState {
 
-@XmlRootElement(name = "dispatch")
-public class Dispatch {
-	
-	private String url;
-	
-	private String module;
-	
-	@XmlElement(name = "url", required = true)
-	public String getUrl() {
-		return url;
-	}
-
-	public void setUrl(String url) {
-		this.url = url;
-	}
-
-	@XmlElement(name = "module", required = true)
-	public String getModule() {
-		return module;
-	}
-
-	public void setModule(String module) {
-		this.module = module;
-	}
+	PAUSE,
+	STOP,
+	RESUME,
+	ACTIVE
 
 }

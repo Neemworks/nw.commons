@@ -1,4 +1,4 @@
-/* 
+/*
  * Copyright 2013 - 2015, Neemworks Nigeria <dev@nimworks.com>
  Permission to use, copy, modify, and distribute this software for any
  purpose with or without fee is hereby granted, provided that the above
@@ -17,6 +17,7 @@ package nw.commons.cache;
 import java.util.concurrent.LinkedBlockingQueue;
 
 import nw.commons.NeemClazz;
+import nw.commons.logging.Loggable;
 
 /**
  * Provides a simple blocking linked queue. Use with caution
@@ -24,19 +25,19 @@ import nw.commons.NeemClazz;
  *
  * @param <T> Generic class for item to be used in the queue
  */
-public class RListBuffer<T> extends NeemClazz {
-	
+public class RListBuffer<T> extends Loggable {
+
 	/** The queue. */
 	protected LinkedBlockingQueue<T> queue;
-	
+
 	/**
 	 * Instantiates a new r list buffer.
 	 */
 	public RListBuffer(){
 		queue = new LinkedBlockingQueue<T>(1000);
-		debug("Queue initialized with default size of 1000");
+		logger.debug("Queue initialized with default size of 1000");
 	}
-	
+
 	/**
 	 * Instantiates a new r list buffer.
 	 *
@@ -44,19 +45,19 @@ public class RListBuffer<T> extends NeemClazz {
 	 */
 	public RListBuffer(int queueCap){
 		queue = new LinkedBlockingQueue<T>(queueCap);
-		debug("Queue initialized with default size " + queueCap);
+		logger.debug("Queue initialized with default size " + queueCap);
 	}
-	
+
 	/**
 	 * Inserts item to the tail of the queue.
 	 *
 	 * @param item the item
 	 */
 	public void queueItem(T item){
-		debug("Adding item to queue. ItemType: " + item);
+		logger.debug("Adding item to queue. ItemType: " + item);
 		queue.add(item);
 	}
-	
+
 	/**
 	 * Retrieves and removes the head element in queue.
 	 *
@@ -64,20 +65,20 @@ public class RListBuffer<T> extends NeemClazz {
 	 */
 	public T deQueueItem() {
 		T poll = queue.poll();
-		debug("Retrieved item from queue. ItemType: " + poll);
+		logger.debug("Retrieved item from queue. ItemType: " + poll);
 		return poll;
 	}
-	
+
 	/**
 	 * Retrieves and does not remove the head element in queue.
 	 *
 	 * @return the head element in the queue
 	 */
 	public T getHeadItem() {
-		debug("Retrieving head item from queue.");
+		logger.debug("Retrieving head item from queue.");
 		return queue.peek();
 	}
-	
+
 	/**
 	 * Long queue.
 	 *
@@ -85,10 +86,10 @@ public class RListBuffer<T> extends NeemClazz {
 	 * @throws InterruptedException the interrupted exception
 	 */
 	public void longQueue(T item) throws InterruptedException{
-		debug("Adding item to queue, may wait if queue is full. ItemType: " + item);
+		logger.debug("Adding item to queue, may wait if queue is full. ItemType: " + item);
 		queue.put(item);
 	}
-	
+
 	/**
 	 * Long deque.
 	 *
@@ -96,8 +97,8 @@ public class RListBuffer<T> extends NeemClazz {
 	 * @throws InterruptedException the interrupted exception
 	 */
 	public T longDeque() throws InterruptedException{
-		debug("Retrieving item from queue. May wait if queue is empty");
+		logger.debug("Retrieving item from queue. May wait if queue is empty");
 		return queue.take();
 	}
-	
+
 }

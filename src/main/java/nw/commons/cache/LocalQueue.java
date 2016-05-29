@@ -17,6 +17,7 @@ package nw.commons.cache;
 import java.util.List;
 import java.util.concurrent.ConcurrentLinkedQueue;
 import nw.commons.NeemClazz;
+import nw.commons.logging.Loggable;
 
 /**
  * Simple queue Implementation.
@@ -24,7 +25,7 @@ import nw.commons.NeemClazz;
  * @author kulgan
  * @param <T> object in queue
  */
-public class LocalQueue<T> extends NeemClazz{
+public class LocalQueue<T> extends Loggable{
 
 	/** The queue. */
 	protected ConcurrentLinkedQueue<T> queue;
@@ -34,7 +35,7 @@ public class LocalQueue<T> extends NeemClazz{
 	 */
 	public LocalQueue(){
 		queue = new ConcurrentLinkedQueue<T>();
-		debug("Queue successfully initialized.");
+		logger.debug("Queue successfully initialized.");
 	}
 
 
@@ -65,7 +66,7 @@ public class LocalQueue<T> extends NeemClazz{
 	 */
 	public T deQueueItem() {
 		T poll = queue.poll();
-		debug("Retrieved item from queue. ItemType: " + poll);
+		logger.debug("Retrieved item from queue. ItemType: " + poll);
 		return poll;
 	}
 
@@ -75,7 +76,7 @@ public class LocalQueue<T> extends NeemClazz{
 	 * @return the head element in the queue
 	 */
 	public T getHeadItem() {
-		debug("Retrieving head item from queue.");
+		logger.debug("Retrieving head item from queue.");
 		return queue.peek();
 	}
 
