@@ -1,4 +1,4 @@
-/* 
+/*
  * Copyright 2013 - 2015, Neemworks Nigeria <dev@nimworks.com>
  Permission to use, copy, modify, and distribute this software for any
  purpose with or without fee is hereby granted, provided that the above
@@ -15,7 +15,7 @@
 package nw.commons.async;
 
 public enum ProcessState {
-	
+
 	PAUSE,
 	STOP,
 	RESUME,

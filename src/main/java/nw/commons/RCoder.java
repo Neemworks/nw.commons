@@ -32,7 +32,6 @@ public class RCoder {
 	 *
 	 * @param text <i> Plain string to be encoded </i>
 	 * @return Base64 encoded string
-	 * @throws UnsupportedEncodingException the unsupported encoding exception
 	 */
 	public String base64encode(String text) {
 

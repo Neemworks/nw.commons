@@ -18,7 +18,7 @@ public class KeyProperties extends AbstractProperties {
 	 *
 	 * @param key reference key for property
 	 * @param value property value
-	 * @param comments
+	 * @param comments message
 	 */
 	public void setProperty(String key, String value, String comments) {
 		set(key, value, comments);

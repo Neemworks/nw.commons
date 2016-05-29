@@ -13,7 +13,7 @@ import org.slf4j.LoggerFactory;
 public abstract class Loggable {
 
 	/**
-	 * @see {@link Logger} instance used for all logging within the class
+	 * {@link Logger} instance used for all logging within the class
 	 */
     protected Logger logger = LoggerFactory.getLogger(getClass());
 

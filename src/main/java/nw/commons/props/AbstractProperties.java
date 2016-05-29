@@ -86,8 +86,8 @@ public abstract class AbstractProperties extends Loggable{
 
 	/**
 	 * Updates an existing property value
-	 * @param key
-	 * @param value
+	 * @param key property key name
+	 * @param value property key value
 	 */
 	protected void update(String key, String value){
 		try {
@@ -110,7 +110,7 @@ public abstract class AbstractProperties extends Loggable{
 	 *
 	 * @param key reference key for property
 	 * @param value property value
-	 * @param comments
+	 * @param comments description for property
 	 */
 	protected synchronized void set(String key, String value, String comments) {
 		String prev = store.put(key, value);
@@ -124,9 +124,9 @@ public abstract class AbstractProperties extends Loggable{
 
 	/**
 	 * Adds a new property entry
-	 * @param key
-	 * @param value
-	 * @param comments
+	 * @param key reference key for property
+	 * @param value value property value
+	 * @param comments description for property
 	 */
 	protected synchronized void add(String key, String value, String comments) {
 		store.put(key, value);
@@ -140,6 +140,10 @@ public abstract class AbstractProperties extends Loggable{
 		save();
 	}
 
+	/**
+	 * Removes key from property list
+	 * @param key reference to property
+	 */
 	protected synchronized void remove(String key) {
 		store.remove(key);
 		TextLine line = null;
@@ -153,17 +157,30 @@ public abstract class AbstractProperties extends Loggable{
 		save();
 	}
 
+	/**
+	 * Adds a comments
+	 * @param comment message
+	 */
 	protected void comment(String comment){
 		cursor +=1;
 		TextLine cmts = new TextLine(cursor, "# " + comment);
 		lines.add(cmts);
 	}
 
+	/**
+	 * Gets a property by key
+	 * @param key key
+	 * @return the property value
+	 */
 	protected synchronized String get(String key) {
 		String prev = store.get(key);
 		return prev;
 	}
 
+	/**
+	 * Sets the property file used for loading properties
+	 * @param properties file name
+	 */
 	public void setProperties(String properties) {
 		this.properties = properties;
 	}
