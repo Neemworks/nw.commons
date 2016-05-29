@@ -18,12 +18,14 @@ import java.io.UnsupportedEncodingException;
 
 import javax.xml.bind.DatatypeConverter;
 
+import nw.commons.exception.NwException;
+
 /**
  * The utility class for base encoding and decoding
  *
  * @author Ogwara O. Rowland
  */
-public class RCoder extends NeemClazz{
+public class RCoder {
 
 	/**
 	 * Encodes a plain text to base 64.
@@ -38,8 +40,7 @@ public class RCoder extends NeemClazz{
 		try {
 			encText = new String(DatatypeConverter.printBase64Binary(text.getBytes("UTF-8")));
 		} catch (UnsupportedEncodingException e) {
-			logger.error("Exception ", e);
-			throw new IllegalArgumentException("Provided encoding is unknown");
+			throw new NwException("Provided encoding is unknown");
 		}
 		return encText;
 	}

@@ -16,9 +16,8 @@ package nw.commons.async;
 
 import java.util.UUID;
 
-import nw.commons.NeemClazz;
 import nw.commons.StopWatch;
-import nw.commons.enums.ProcessState;
+import nw.commons.logging.Loggable;
 
 /**
  * Basic signature of a loop process. A process that repeats a particular action
@@ -27,7 +26,7 @@ import nw.commons.enums.ProcessState;
  * @author Ogwara O. Rowland
  *
  */
-public abstract class LoopProcess extends NeemClazz implements Runnable{
+public abstract class LoopProcess extends Loggable implements Runnable{
 
 	private Long sleepTime = 1L;
 	private String processId;
@@ -35,7 +34,7 @@ public abstract class LoopProcess extends NeemClazz implements Runnable{
 
 	@Override
 	public void run() {
-		debug("Starting process with processId: " + processId);
+		logger.debug("Starting process with processId: " + processId);
 		StopWatch  sw = new StopWatch();
 		if(processId == null){
 			processId = UUID.randomUUID().toString(); // Generate identifier for this process
@@ -43,10 +42,10 @@ public abstract class LoopProcess extends NeemClazz implements Runnable{
 		while(processState != ProcessState.STOP){
 			StopWatch pw = new StopWatch();
 			doWork();
-			debug("Current action has been concluded. " + processId + " Run Time: " + pw.elapsedTime() + " ms");
+			logger.debug("Current action has been concluded. " + processId + " Run Time: " + pw.elapsedTime() + " ms");
 			sleep();
 		}
-		debug("Process has been terminated. " + processId + " Run Time: " + sw.elapsedTime() + " ms");
+		logger.debug("Process has been terminated. " + processId + " Run Time: " + sw.elapsedTime() + " ms");
 	}
 
 	public Long getSleepTime() {
@@ -75,7 +74,7 @@ public abstract class LoopProcess extends NeemClazz implements Runnable{
 	 */
 	private final void pauseProcess() {
 		synchronized (this) {
-			debug("Process has been paused: pid " + processId);
+			logger.debug("Process has been paused: pid " + processId);
 			processState = ProcessState.PAUSE;
 			try {
 				this.wait();
@@ -92,7 +91,7 @@ public abstract class LoopProcess extends NeemClazz implements Runnable{
 	public final void resumeProcess(){
 		synchronized (this) {
 			processState = ProcessState.ACTIVE;
-			debug("Process has been resumed: pid " + processId);
+			logger.debug("Process has been resumed: pid " + processId);
 			this.notify();
 		}
 	}

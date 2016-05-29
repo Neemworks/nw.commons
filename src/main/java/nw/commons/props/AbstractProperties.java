@@ -1,6 +1,8 @@
 package nw.commons.props;
 
 import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
@@ -16,12 +18,12 @@ import nw.commons.logging.Loggable;
  * @author Ogwara O. Rowland
  *
  */
-public abstract class KeyValueProperties extends Loggable{
+public abstract class AbstractProperties extends Loggable{
 
 	/**
 	 * Property store
 	 */
-	private Map<String, String> store = new HashMap<String, String>();
+	protected Map<String, String> store = new HashMap<String, String>();
 
 	/**
 	 * Sorted list of lines
@@ -44,6 +46,7 @@ public abstract class KeyValueProperties extends Loggable{
 	 */
 	protected void read(){
 		try {
+			new File(properties).createNewFile();
 			FileReader fr = new FileReader(properties);
 			BufferedReader br = new BufferedReader(fr);
 			String line = null;
@@ -59,6 +62,8 @@ public abstract class KeyValueProperties extends Loggable{
 			}
 			br.close();
 			fr.close();
+		} catch (FileNotFoundException e) {
+			logger.error("No property file with name " + properties + " found" );
 		} catch (IOException e) {
 			logger.error("A read error occurred while reading " + properties );
 		}
@@ -66,10 +71,8 @@ public abstract class KeyValueProperties extends Loggable{
 
 	/**
 	 * saves a new property
-	 * @param key
-	 * @param value
 	 */
-	protected void save(String key, String value){
+	protected void save(){
 		try {
 			FileWriter fw = new FileWriter(properties);
 			for (TextLine textLine : lines) {
@@ -107,10 +110,16 @@ public abstract class KeyValueProperties extends Loggable{
 	 *
 	 * @param key reference key for property
 	 * @param value property value
+	 * @param comments
 	 */
-	protected synchronized void set(String key, String value) {
-		store.put(key, value);
-		update(key, value);
+	protected synchronized void set(String key, String value, String comments) {
+		String prev = store.put(key, value);
+		if(prev == null){
+			// new entry
+			add(key, value, comments);
+		}else{
+			update(key, value);
+		}
 	}
 
 	/**
@@ -122,15 +131,41 @@ public abstract class KeyValueProperties extends Loggable{
 	protected synchronized void add(String key, String value, String comments) {
 		store.put(key, value);
 		if(comments != null && !comments.isEmpty()){
-			cursor +=1;
-			TextLine cmts = new TextLine(cursor, "# " + comments);
-			lines.add(cmts);
+			comment(comments);
 		}
 
 		cursor +=1;
 		TextLine text = new TextLine(cursor, key + "="+value);
 		lines.add(text);
-		save(key, value);
+		save();
+	}
+
+	protected synchronized void remove(String key) {
+		store.remove(key);
+		TextLine line = null;
+		for (TextLine textLine : lines) {
+			if(textLine.isKey(key)){
+				line = textLine;
+				break;
+			}
+		}
+		lines.remove(line);
+		save();
+	}
+
+	protected void comment(String comment){
+		cursor +=1;
+		TextLine cmts = new TextLine(cursor, "# " + comment);
+		lines.add(cmts);
+	}
+
+	protected synchronized String get(String key) {
+		String prev = store.get(key);
+		return prev;
+	}
+
+	public void setProperties(String properties) {
+		this.properties = properties;
 	}
 
 	public static void main(String[] args) throws IOException {

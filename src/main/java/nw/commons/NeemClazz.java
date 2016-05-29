@@ -15,22 +15,19 @@
 package nw.commons;
 
 import nw.commons.cache.PropertiesCache;
+import nw.commons.logging.Loggable;
+import nw.commons.props.KeyProperties;
 
-import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 /**
  * Base class that includes logger and property file access
  *
  * @author Ogwara O. Rowland
- * @version 0.2
- * @since 10th November, 2013
+ * @version 0.3
  *
  */
-public abstract class NeemClazz {
-
-    /** simple slf4j logger. */
-    protected Logger logger = LoggerFactory.getLogger(getClass());
+public abstract class NeemClazz extends Loggable{
 
     /** Enables or disables debug mode on. */
     private static boolean debugModeOn;
@@ -38,12 +35,12 @@ public abstract class NeemClazz {
     /**
      * Property file name
      */
-    private String targetPropertyFilename = "application.properties";
+    private String targetPropertyFilename = "apps.properties";
 
     /**
      * Default Properties file manipulations (application.properties)
      */
-    protected AppProperties appProps;
+    protected KeyProperties appProps;
 
     /**
      * Initialization
