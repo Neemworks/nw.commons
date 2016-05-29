@@ -18,8 +18,6 @@ import nw.commons.cache.PropertiesCache;
 import nw.commons.logging.Loggable;
 import nw.commons.props.KeyProperties;
 
-import org.slf4j.LoggerFactory;
-
 /**
  * Base class that includes logger and property file access
  *
@@ -29,13 +27,10 @@ import org.slf4j.LoggerFactory;
  */
 public abstract class NeemClazz extends Loggable{
 
-    /** Enables or disables debug mode on. */
-    private static boolean debugModeOn;
-
     /**
      * Property file name
      */
-    private String targetPropertyFilename = "apps.properties";
+    protected String targetPropertyFilename = "apps.properties";
 
     /**
      * Default Properties file manipulations (application.properties)
@@ -46,99 +41,24 @@ public abstract class NeemClazz extends Loggable{
      * Initialization
      */
     public NeemClazz(){
+    	init();
+    }
+
+    protected void init(){
     	appProps = PropertiesCache.getPropertyFile(getTargetPropertyFilename());
     }
 
-
-    /**
-     * Debug.
-     *
-     * @param msg the msg
-     */
-    public void debug(String msg){
-    	if(isDebugModeOn()){
-    		logger.debug(msg);
-    	}
-    }
-
-    /**
-     * static debug logging.
-     *
-     * @param clz class to be debugged
-     * @param msg message to log
-     */
-    protected static void sd(Class<? extends NeemClazz> clz, String msg){
-    	LoggerFactory.getLogger(clz).debug(msg);
-    }
-
-    /**
-     * static info logging.
-     *
-     * @param clz class to be debugged
-     * @param msg message to log
-     */
-    protected static void si(Class<? extends NeemClazz> clz, String msg){
-    	LoggerFactory.getLogger(clz).info(msg);
-    }
-
-    /**
-     * static trace logging.
-     *
-     * @param clz class to be debugged
-     * @param msg message to log
-     */
-    protected static void st(Class<? extends NeemClazz> clz, String msg){
-    	LoggerFactory.getLogger(clz).trace(msg);
-    }
-
-    /**
-     * static warn logging.
-     *
-     * @param clz class to be logged
-     * @param msg message to log
-     * @param t exception to log
-     */
-    protected static void sd(Class<? extends NeemClazz> clz, String msg, Throwable t){
-    	LoggerFactory.getLogger(clz).warn(msg, t);
-    }
-
-    /**
-     * static error logging.
-     *
-     * @param clz class to be logged
-     * @param msg message to log
-     * @param t exception to log
-     */
-    protected static void se(Class<? extends NeemClazz> clz, String msg, Throwable t){
-    	LoggerFactory.getLogger(clz).error(msg, t);
-    }
-
-	/**
-	 * Checks if is debug mode on.
-	 *
-	 * @return true, if is debug mode on
-	 */
-	public boolean isDebugModeOn() {
-		return debugModeOn;
-	}
-
-	/**
-	 * Sets the debug mode on.
-	 *
-	 * @param debugModeOn the new debug mode on
-	 */
-	public void setDebugModeOn(boolean debugModeOn) {
-		NeemClazz.debugModeOn = debugModeOn;
-	}
-
-
-	public String getTargetPropertyFilename() {
+	private String getTargetPropertyFilename() {
 		return targetPropertyFilename;
 	}
 
+	/**
+	 * Sets the filename that references the location of the properties file
+	 */
+	public abstract void setTargetPropertyFilename();
 
-	public void setTargetPropertyFilename(String targetPropertyFilename) {
-		this.targetPropertyFilename = targetPropertyFilename;
+	public KeyProperties getPropertie(){
+		return this.appProps;
 	}
 
 }
