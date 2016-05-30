@@ -16,7 +16,7 @@ package nw.commons;
 
 import nw.commons.cache.PropertiesCache;
 import nw.commons.logging.Loggable;
-import nw.commons.props.KeyProperties;
+import nw.commons.props.IProperties;
 
 /**
  * Base class that includes logger and property file access
@@ -35,7 +35,7 @@ public abstract class NeemClazz extends Loggable{
     /**
      * Default Properties file manipulations (application.properties)
      */
-    protected KeyProperties appProps;
+    protected IProperties appProps;
 
     /**
      * Initialization
@@ -57,7 +57,7 @@ public abstract class NeemClazz extends Loggable{
 	 */
 	public abstract void setTargetPropertyFilename();
 
-	public KeyProperties getPropertie(){
+	public IProperties getPropertie(){
 		return this.appProps;
 	}
 

@@ -16,16 +16,15 @@ package nw.commons.cache;
 
 import java.util.List;
 import java.util.concurrent.ConcurrentLinkedQueue;
-import nw.commons.NeemClazz;
 import nw.commons.logging.Loggable;
 
 /**
  * Simple queue Implementation.
  *
- * @author kulgan
+ * @author Ogwara O. Rowland
  * @param <T> object in queue
  */
-public class LocalQueue<T> extends Loggable{
+public class GenericQueue<T> extends Loggable{
 
 	/** The queue. */
 	protected ConcurrentLinkedQueue<T> queue;
@@ -33,7 +32,7 @@ public class LocalQueue<T> extends Loggable{
 	/**
 	 * Instantiates a new local queue.
 	 */
-	public LocalQueue(){
+	public GenericQueue(){
 		queue = new ConcurrentLinkedQueue<T>();
 		logger.debug("Queue successfully initialized.");
 	}

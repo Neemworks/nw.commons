@@ -16,7 +16,6 @@ package nw.commons.cache;
 
 import java.util.concurrent.LinkedBlockingQueue;
 
-import nw.commons.NeemClazz;
 import nw.commons.logging.Loggable;
 
 /**
@@ -25,7 +24,7 @@ import nw.commons.logging.Loggable;
  *
  * @param <T> Generic class for item to be used in the queue
  */
-public class RListBuffer<T> extends Loggable {
+public class GenericBlockingQueue<T> extends Loggable {
 
 	/** The queue. */
 	protected LinkedBlockingQueue<T> queue;
@@ -33,7 +32,7 @@ public class RListBuffer<T> extends Loggable {
 	/**
 	 * Instantiates a new r list buffer.
 	 */
-	public RListBuffer(){
+	public GenericBlockingQueue(){
 		queue = new LinkedBlockingQueue<T>(1000);
 		logger.debug("Queue initialized with default size of 1000");
 	}
@@ -43,7 +42,7 @@ public class RListBuffer<T> extends Loggable {
 	 *
 	 * @param queueCap the queue cap
 	 */
-	public RListBuffer(int queueCap){
+	public GenericBlockingQueue(int queueCap){
 		queue = new LinkedBlockingQueue<T>(queueCap);
 		logger.debug("Queue initialized with default size " + queueCap);
 	}
