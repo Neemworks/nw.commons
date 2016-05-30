@@ -1,4 +1,4 @@
-package nw.commons.props;
+package com.nimworks.commons.props;
 
 public class TextLine implements Comparable<TextLine>{
 

@@ -12,12 +12,12 @@
  ACTION OF CONTRACT, NEGLIGENCE OR OTHER TORTIOUS ACTION, ARISING OUT OF
  OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
  */
-package nw.commons.async;
+package com.nimworks.commons.async;
 
 import java.util.UUID;
 
-import nw.commons.StopWatch;
-import nw.commons.logging.Loggable;
+import com.nimworks.commons.StopWatch;
+import com.nimworks.commons.logging.Loggable;
 
 /**
  * Basic signature of a loop process. A process that repeats a particular action

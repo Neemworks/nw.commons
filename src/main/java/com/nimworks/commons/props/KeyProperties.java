@@ -1,4 +1,4 @@
-package nw.commons.props;
+package com.nimworks.commons.props;
 
 import java.math.BigDecimal;
 
@@ -14,7 +14,7 @@ public class KeyProperties extends AbstractProperties implements IProperties {
 	}
 
 	/* (non-Javadoc)
-	 * @see nw.commons.props.IProperties#setProperty(java.lang.String, java.lang.String, java.lang.String)
+	 * @see com.nimworks.commons.props.IProperties#setProperty(java.lang.String, java.lang.String, java.lang.String)
 	 */
 	@Override
 	public void setProperty(String key, String value, String comments) {
@@ -22,7 +22,7 @@ public class KeyProperties extends AbstractProperties implements IProperties {
 	}
 
 	/* (non-Javadoc)
-	 * @see nw.commons.props.IProperties#getProperty(java.lang.String, java.lang.String)
+	 * @see com.nimworks.commons.props.IProperties#getProperty(java.lang.String, java.lang.String)
 	 */
 	@Override
 	public String getProperty(String key, String defaultVal) {
@@ -31,7 +31,7 @@ public class KeyProperties extends AbstractProperties implements IProperties {
 	}
 
 	/* (non-Javadoc)
-	 * @see nw.commons.props.IProperties#removeProperty(java.lang.String)
+	 * @see com.nimworks.commons.props.IProperties#removeProperty(java.lang.String)
 	 */
 	@Override
 	public synchronized void removeProperty(String key) {
@@ -39,7 +39,7 @@ public class KeyProperties extends AbstractProperties implements IProperties {
 	}
 
 	/* (non-Javadoc)
-	 * @see nw.commons.props.IProperties#getInt(java.lang.String, java.lang.Integer)
+	 * @see com.nimworks.commons.props.IProperties#getInt(java.lang.String, java.lang.Integer)
 	 */
 	@Override
 	public Integer getInt(String key, Integer defaultVal) {
@@ -47,7 +47,7 @@ public class KeyProperties extends AbstractProperties implements IProperties {
 	}
 
 	/* (non-Javadoc)
-	 * @see nw.commons.props.IProperties#getLong(java.lang.String, java.lang.Long)
+	 * @see com.nimworks.commons.props.IProperties#getLong(java.lang.String, java.lang.Long)
 	 */
 	@Override
 	public Long getLong(String key, Long defaultVal) {
@@ -55,7 +55,7 @@ public class KeyProperties extends AbstractProperties implements IProperties {
 	}
 
 	/* (non-Javadoc)
-	 * @see nw.commons.props.IProperties#getBigDecimal(java.lang.String, java.math.BigDecimal)
+	 * @see com.nimworks.commons.props.IProperties#getBigDecimal(java.lang.String, java.math.BigDecimal)
 	 */
 	@Override
 	public BigDecimal getBigDecimal(String key, BigDecimal defaultVal) {
@@ -63,7 +63,7 @@ public class KeyProperties extends AbstractProperties implements IProperties {
 	}
 
 	/* (non-Javadoc)
-	 * @see nw.commons.props.IProperties#getDouble(java.lang.String, java.lang.Double)
+	 * @see com.nimworks.commons.props.IProperties#getDouble(java.lang.String, java.lang.Double)
 	 */
 	@Override
 	public Double getDouble(String key, Double defaultVal) {
@@ -71,7 +71,7 @@ public class KeyProperties extends AbstractProperties implements IProperties {
 	}
 
 	/* (non-Javadoc)
-	 * @see nw.commons.props.IProperties#getFloat(java.lang.String, java.lang.Float)
+	 * @see com.nimworks.commons.props.IProperties#getFloat(java.lang.String, java.lang.Float)
 	 */
 	@Override
 	public Float getFloat(String key, Float defaultVal) {
@@ -79,7 +79,7 @@ public class KeyProperties extends AbstractProperties implements IProperties {
 	}
 
 	/* (non-Javadoc)
-	 * @see nw.commons.props.IProperties#getBool(java.lang.String, java.lang.Boolean)
+	 * @see com.nimworks.commons.props.IProperties#getBool(java.lang.String, java.lang.Boolean)
 	 */
 	@Override
 	public Boolean getBool(String key, Boolean defaultVal){

@@ -12,13 +12,13 @@
  ACTION OF CONTRACT, NEGLIGENCE OR OTHER TORTIOUS ACTION, ARISING OUT OF
  OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
  */
-package nw.commons;
+package com.nimworks.commons;
 
 import java.io.UnsupportedEncodingException;
 
 import javax.xml.bind.DatatypeConverter;
 
-import nw.commons.exception.NwException;
+import com.nimworks.commons.exception.NwException;
 
 /**
  * The utility class for base encoding and decoding

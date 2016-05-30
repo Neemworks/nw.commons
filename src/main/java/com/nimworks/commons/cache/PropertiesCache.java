@@ -12,12 +12,12 @@
  ACTION OF CONTRACT, NEGLIGENCE OR OTHER TORTIOUS ACTION, ARISING OUT OF
  OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
  */
-package nw.commons.cache;
+package com.nimworks.commons.cache;
 
 import java.util.concurrent.ConcurrentHashMap;
 
-import nw.commons.props.IProperties;
-import nw.commons.props.KeyProperties;
+import com.nimworks.commons.props.IProperties;
+import com.nimworks.commons.props.KeyProperties;
 
 /**
  * The Class PropertiesCache.
