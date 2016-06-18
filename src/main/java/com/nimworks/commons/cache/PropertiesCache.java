@@ -16,8 +16,8 @@ package com.nimworks.commons.cache;
 
 import java.util.concurrent.ConcurrentHashMap;
 
-import com.nimworks.commons.props.IProperties;
-import com.nimworks.commons.props.KeyProperties;
+import com.nimworks.commons.props.IProp;
+import com.nimworks.commons.props.TextProp;
 
 /**
  * The Class PropertiesCache.
@@ -25,7 +25,7 @@ import com.nimworks.commons.props.KeyProperties;
 public class PropertiesCache {
 
 	/** The hashmap of referenced property files. */
-	private static ConcurrentHashMap<String, IProperties> pties = new ConcurrentHashMap<String, IProperties>();
+	private static ConcurrentHashMap<String, IProp> pties = new ConcurrentHashMap<String, IProp>();
 
 	/**
 	 * Retrieves the property object by name
@@ -33,10 +33,10 @@ public class PropertiesCache {
 	 * @param file the file
 	 * @return the property file
 	 */
-	public static IProperties getPropertyFile(String file) {
-		IProperties pf = pties.get(file);
+	public static IProp getPropertyFile(String file) {
+		IProp pf = pties.get(file);
 		if(pf == null){
-			pf = new KeyProperties(file);
+			pf = new TextProp(file);
 			pties.put(file, pf);
 		}
 		return pf;
@@ -47,11 +47,11 @@ public class PropertiesCache {
 	 *
 	 * @return the property file
 	 */
-	public static IProperties getPropertyFile() {
+	public static IProp getPropertyFile() {
 		String file = "application.properties";
-		IProperties pf = pties.get(file);
+		IProp pf = pties.get(file);
 		if(pf == null){
-			pf = new KeyProperties(file);
+			pf = new TextProp(file);
 			pties.put(file, pf);
 		}
 		return pf;

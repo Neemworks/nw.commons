@@ -18,7 +18,7 @@ import com.nimworks.commons.logging.Loggable;
  * @author Ogwara O. Rowland
  *
  */
-public abstract class AbstractProperties extends Loggable{
+public abstract class AbstractProp extends Loggable{
 
 	/**
 	 * Property store

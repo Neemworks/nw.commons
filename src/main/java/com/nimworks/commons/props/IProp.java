@@ -1,8 +1,20 @@
+/*
+ * File:	IProp.java
+ * Author				Date			Change
+ * Rowland				Jun 18, 2016			Created
+ *
+ *
+ * Property of Neemworks, do not reproduce or reuse without permission
+ * contact dev@neemworks.net for further information.
+ * 
+ * Copyright Neemworks
+ * http://www.neemworks.net
+ */
 package com.nimworks.commons.props;
 
 import java.math.BigDecimal;
 
-public interface IProperties {
+public interface IProp {
 
 	/**
 	 * sets the value for a property.

@@ -1,20 +1,37 @@
+/*
+ * File:	TextProp.java
+ * Author				Date			Change
+ * Rowland				Jun 18, 2016			Created
+ *
+ *
+ * Property of Neemworks, do not reproduce or reuse without permission
+ * contact dev@neemworks.net for further information.
+ *
+ * Copyright Neemworks
+ * http://www.neemworks.net
+ */
 package com.nimworks.commons.props;
 
 import java.math.BigDecimal;
 
-public class KeyProperties extends AbstractProperties implements IProperties {
+/**
+ *
+ * @author Ogwara O. Rowland
+ *
+ */
+public class TextProp extends AbstractProp implements IProp {
 
-	public KeyProperties() {
+	public TextProp() {
 		this("app.properties");
 	}
 
-	public KeyProperties(String properties) {
+	public TextProp(String properties) {
 		setProperties(properties);
 		read();
 	}
 
 	/* (non-Javadoc)
-	 * @see com.nimworks.commons.props.IProperties#setProperty(java.lang.String, java.lang.String, java.lang.String)
+	 * @see com.nimworks.commons.props.IProp#setProperty(java.lang.String, java.lang.String, java.lang.String)
 	 */
 	@Override
 	public void setProperty(String key, String value, String comments) {
@@ -22,7 +39,7 @@ public class KeyProperties extends AbstractProperties implements IProperties {
 	}
 
 	/* (non-Javadoc)
-	 * @see com.nimworks.commons.props.IProperties#getProperty(java.lang.String, java.lang.String)
+	 * @see com.nimworks.commons.props.IProp#getProperty(java.lang.String, java.lang.String)
 	 */
 	@Override
 	public String getProperty(String key, String defaultVal) {
@@ -31,7 +48,7 @@ public class KeyProperties extends AbstractProperties implements IProperties {
 	}
 
 	/* (non-Javadoc)
-	 * @see com.nimworks.commons.props.IProperties#removeProperty(java.lang.String)
+	 * @see com.nimworks.commons.props.IProp#removeProperty(java.lang.String)
 	 */
 	@Override
 	public synchronized void removeProperty(String key) {
@@ -39,7 +56,7 @@ public class KeyProperties extends AbstractProperties implements IProperties {
 	}
 
 	/* (non-Javadoc)
-	 * @see com.nimworks.commons.props.IProperties#getInt(java.lang.String, java.lang.Integer)
+	 * @see com.nimworks.commons.props.IProp#getInt(java.lang.String, java.lang.Integer)
 	 */
 	@Override
 	public Integer getInt(String key, Integer defaultVal) {
@@ -47,7 +64,7 @@ public class KeyProperties extends AbstractProperties implements IProperties {
 	}
 
 	/* (non-Javadoc)
-	 * @see com.nimworks.commons.props.IProperties#getLong(java.lang.String, java.lang.Long)
+	 * @see com.nimworks.commons.props.IProp#getLong(java.lang.String, java.lang.Long)
 	 */
 	@Override
 	public Long getLong(String key, Long defaultVal) {
@@ -55,7 +72,7 @@ public class KeyProperties extends AbstractProperties implements IProperties {
 	}
 
 	/* (non-Javadoc)
-	 * @see com.nimworks.commons.props.IProperties#getBigDecimal(java.lang.String, java.math.BigDecimal)
+	 * @see com.nimworks.commons.props.IProp#getBigDecimal(java.lang.String, java.math.BigDecimal)
 	 */
 	@Override
 	public BigDecimal getBigDecimal(String key, BigDecimal defaultVal) {
@@ -63,7 +80,7 @@ public class KeyProperties extends AbstractProperties implements IProperties {
 	}
 
 	/* (non-Javadoc)
-	 * @see com.nimworks.commons.props.IProperties#getDouble(java.lang.String, java.lang.Double)
+	 * @see com.nimworks.commons.props.IProp#getDouble(java.lang.String, java.lang.Double)
 	 */
 	@Override
 	public Double getDouble(String key, Double defaultVal) {
@@ -71,7 +88,7 @@ public class KeyProperties extends AbstractProperties implements IProperties {
 	}
 
 	/* (non-Javadoc)
-	 * @see com.nimworks.commons.props.IProperties#getFloat(java.lang.String, java.lang.Float)
+	 * @see com.nimworks.commons.props.IProp#getFloat(java.lang.String, java.lang.Float)
 	 */
 	@Override
 	public Float getFloat(String key, Float defaultVal) {
@@ -79,7 +96,7 @@ public class KeyProperties extends AbstractProperties implements IProperties {
 	}
 
 	/* (non-Javadoc)
-	 * @see com.nimworks.commons.props.IProperties#getBool(java.lang.String, java.lang.Boolean)
+	 * @see com.nimworks.commons.props.IProp#getBool(java.lang.String, java.lang.Boolean)
 	 */
 	@Override
 	public Boolean getBool(String key, Boolean defaultVal){
@@ -87,8 +104,8 @@ public class KeyProperties extends AbstractProperties implements IProperties {
 	}
 
 	public static void main(String[] args) {
-		IProperties kp = new KeyProperties();
-		kp.setProperty("high.score", "20000", "highest player score");
+		IProp kp = new TextProp();
+		kp.setProperty("high.score", "-20000", "highest player scored tonight");
 		kp.setProperty("low.score", "200", "lowest player score");
 	}
 

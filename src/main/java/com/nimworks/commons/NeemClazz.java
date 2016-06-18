@@ -16,7 +16,7 @@ package com.nimworks.commons;
 
 import com.nimworks.commons.cache.PropertiesCache;
 import com.nimworks.commons.logging.Loggable;
-import com.nimworks.commons.props.IProperties;
+import com.nimworks.commons.props.IProp;
 
 /**
  * Base class that includes logger and property file access
@@ -35,7 +35,7 @@ public abstract class NeemClazz extends Loggable{
     /**
      * Default Properties file manipulations (application.properties)
      */
-    protected IProperties appProps;
+    protected IProp appProps;
 
     /**
      * Initialization
@@ -57,7 +57,7 @@ public abstract class NeemClazz extends Loggable{
 	 */
 	public abstract void setTargetPropertyFilename();
 
-	public IProperties getPropertie(){
+	public IProp getPropertie(){
 		return this.appProps;
 	}
 
