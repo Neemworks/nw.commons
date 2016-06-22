@@ -18,7 +18,7 @@ import nw.commons.exception.NwException;
 
 /**
  * Utility operations spawning threads
- * @author kulgan
+ * @author Ogwara O. Rowland
  *
  */
 public class AsyncFactory {

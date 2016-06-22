@@ -1,0 +1,4 @@
+/target/
+/bin/
+/.[cps]*
+/*.properties

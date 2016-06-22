@@ -16,7 +16,6 @@ package nw.commons.cache;
 
 import java.util.concurrent.LinkedBlockingQueue;
 
-import nw.commons.NeemClazz;
 import nw.commons.logging.Loggable;
 
 /**

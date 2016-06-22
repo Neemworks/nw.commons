@@ -16,7 +16,6 @@ package nw.commons.cache;
 
 import java.util.List;
 import java.util.concurrent.ConcurrentLinkedQueue;
-import nw.commons.NeemClazz;
 import nw.commons.logging.Loggable;
 
 /**
@@ -35,7 +34,6 @@ public class LocalQueue<T> extends Loggable{
 	 */
 	public LocalQueue(){
 		queue = new ConcurrentLinkedQueue<T>();
-		logger.debug("Queue successfully initialized.");
 	}
 
 
@@ -66,7 +64,6 @@ public class LocalQueue<T> extends Loggable{
 	 */
 	public T deQueueItem() {
 		T poll = queue.poll();
-		logger.debug("Retrieved item from queue. ItemType: " + poll);
 		return poll;
 	}
 
@@ -76,7 +73,6 @@ public class LocalQueue<T> extends Loggable{
 	 * @return the head element in the queue
 	 */
 	public T getHeadItem() {
-		logger.debug("Retrieving head item from queue.");
 		return queue.peek();
 	}
 

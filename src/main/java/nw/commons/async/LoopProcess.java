@@ -16,7 +16,6 @@ package nw.commons.async;
 
 import java.util.UUID;
 
-import nw.commons.StopWatch;
 import nw.commons.logging.Loggable;
 
 /**
@@ -34,18 +33,13 @@ public abstract class LoopProcess extends Loggable implements Runnable{
 
 	@Override
 	public void run() {
-		logger.debug("Starting process with processId: " + processId);
-		StopWatch  sw = new StopWatch();
 		if(processId == null){
 			processId = UUID.randomUUID().toString(); // Generate identifier for this process
 		}
 		while(processState != ProcessState.STOP){
-			StopWatch pw = new StopWatch();
 			doWork();
-			logger.debug("Current action has been concluded. " + processId + " Run Time: " + pw.elapsedTime() + " ms");
 			sleep();
 		}
-		logger.debug("Process has been terminated. " + processId + " Run Time: " + sw.elapsedTime() + " ms");
 	}
 
 	public Long getSleepTime() {
@@ -78,8 +72,8 @@ public abstract class LoopProcess extends Loggable implements Runnable{
 			processState = ProcessState.PAUSE;
 			try {
 				this.wait();
-			} catch (Exception e) {
-				logger.error("Interrupted Exception while pausing process: ", e);
+			} catch (InterruptedException e) {
+				throw new IllegalThreadStateException(e.toString());
 			}
 		}
 
@@ -91,7 +85,6 @@ public abstract class LoopProcess extends Loggable implements Runnable{
 	public final void resumeProcess(){
 		synchronized (this) {
 			processState = ProcessState.ACTIVE;
-			logger.debug("Process has been resumed: pid " + processId);
 			this.notify();
 		}
 	}
@@ -100,10 +93,14 @@ public abstract class LoopProcess extends Loggable implements Runnable{
 		try {
 			Thread.sleep(getSleepTime());
 		} catch (InterruptedException e) {
-			logger.error("Interrupted Exception while sleeping process: ", e);
+			throw new IllegalThreadStateException(e.toString());
 		}
 	}
 
+	/**
+	 *
+	 * @return the current state of the process @see {@link ProcessState}
+	 */
 	public ProcessState getProcessState() {
 		return processState;
 	}
