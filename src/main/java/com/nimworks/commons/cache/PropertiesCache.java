@@ -17,7 +17,7 @@ package com.nimworks.commons.cache;
 import java.util.concurrent.ConcurrentHashMap;
 
 import com.nimworks.commons.props.IProp;
-import com.nimworks.commons.props.TextProp;
+import com.nimworks.commons.props.KeyValueProperties;
 
 /**
  * The Class PropertiesCache.
@@ -36,7 +36,7 @@ public class PropertiesCache {
 	public static IProp getPropertyFile(String file) {
 		IProp pf = pties.get(file);
 		if(pf == null){
-			pf = new TextProp(file);
+			pf = new KeyValueProperties(file);
 			pties.put(file, pf);
 		}
 		return pf;
@@ -51,7 +51,7 @@ public class PropertiesCache {
 		String file = "application.properties";
 		IProp pf = pties.get(file);
 		if(pf == null){
-			pf = new TextProp(file);
+			pf = new KeyValueProperties(file);
 			pties.put(file, pf);
 		}
 		return pf;

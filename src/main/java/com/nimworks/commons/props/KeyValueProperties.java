@@ -1,5 +1,5 @@
 /*
- * File:	TextProp.java
+ * File:	KeyValueProperties.java
  * Author				Date			Change
  * Rowland				Jun 18, 2016			Created
  *
@@ -12,6 +12,7 @@
  */
 package com.nimworks.commons.props;
 
+import java.io.File;
 import java.math.BigDecimal;
 
 /**
@@ -19,14 +20,20 @@ import java.math.BigDecimal;
  * @author Ogwara O. Rowland
  *
  */
-public class TextProp extends AbstractProp implements IProp {
+public class KeyValueProperties extends AbstractProp implements IProp {
 
-	public TextProp() {
-		this("app.properties");
+	public KeyValueProperties() {
+		this("application.properties");
 	}
 
-	public TextProp(String properties) {
+	public KeyValueProperties(String properties) {
 		setProperties(properties);
+		read();
+	}
+
+	public KeyValueProperties(File properties){
+		properties.getParentFile().mkdirs();
+		setProperties(properties.getAbsolutePath());
 		read();
 	}
 
@@ -104,7 +111,7 @@ public class TextProp extends AbstractProp implements IProp {
 	}
 
 	public static void main(String[] args) {
-		IProp kp = new TextProp();
+		IProp kp = new KeyValueProperties(new File(".build/v.properties"));
 		kp.setProperty("high.score", "-20000", "highest player scored tonight");
 		kp.setProperty("low.score", "200", "lowest player score");
 	}

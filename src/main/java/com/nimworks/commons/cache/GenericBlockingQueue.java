@@ -100,4 +100,8 @@ public class GenericBlockingQueue<T> extends Loggable {
 		return queue.take();
 	}
 
+	public static void main(String[] args) {
+		System.out.println("NO TAG=1212312323".replace("NO TAG", "KYCNDDD55"));
+	}
+
 }

@@ -30,7 +30,7 @@ public abstract class NeemClazz extends Loggable{
     /**
      * Property file name
      */
-    protected String targetPropertyFilename = "apps.properties";
+    protected String targetPropertyFilename = "application.properties";
 
     /**
      * Default Properties file manipulations (application.properties)
