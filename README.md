@@ -21,7 +21,8 @@ Hosted on maven central
 
 ### Sample Usage
 #### Logging and Properties Files
-
+The structure of the properties files remains unchanged even after updating using any of the set methods.
+The comments remains intact too.
 ``` java
 public class AppBase extends NeemClazz {
 
