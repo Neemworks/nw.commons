@@ -17,7 +17,7 @@ package nw.commons.cache;
 import java.util.concurrent.ConcurrentHashMap;
 
 import nw.commons.props.IProp;
-import nw.commons.props.KeyValueProperties;
+import nw.commons.props.text.LineProperties;
 
 /**
  * The Class PropertiesCache.
@@ -36,7 +36,7 @@ public class PropertiesCache {
 	public static IProp getPropertyFile(String file) {
 		IProp pf = pties.get(file);
 		if(pf == null){
-			pf = new KeyValueProperties(file);
+			pf = new LineProperties(file);
 			pties.put(file, pf);
 		}
 		return pf;
@@ -51,7 +51,7 @@ public class PropertiesCache {
 		String file = "application.properties";
 		IProp pf = pties.get(file);
 		if(pf == null){
-			pf = new KeyValueProperties(file);
+			pf = new LineProperties(file);
 			pties.put(file, pf);
 		}
 		return pf;

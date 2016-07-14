@@ -1,4 +1,4 @@
-package nw.commons.props;
+package nw.commons.props.text;
 
 import java.io.BufferedReader;
 import java.io.File;
@@ -18,7 +18,7 @@ import nw.commons.logging.Loggable;
  * @author Ogwara O. Rowland
  *
  */
-public abstract class AbstractProp extends Loggable{
+public abstract class TextLineManager extends Loggable{
 
 	/**
 	 * Property store

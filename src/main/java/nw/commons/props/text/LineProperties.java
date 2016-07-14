@@ -10,28 +10,30 @@
  * Copyright Neemworks
  * http://www.neemworks.net
  */
-package nw.commons.props;
+package nw.commons.props.text;
 
 import java.io.File;
 import java.math.BigDecimal;
 
+import nw.commons.props.IProp;
+
 /**
- *
+ * Key Value properties, usually in text files
  * @author Ogwara O. Rowland
  *
  */
-public class KeyValueProperties extends AbstractProp implements IProp {
+public class LineProperties extends TextLineManager implements IProp {
 
-	public KeyValueProperties() {
+	public LineProperties() {
 		this("application.properties");
 	}
 
-	public KeyValueProperties(String properties) {
+	public LineProperties(String properties) {
 		setProperties(properties);
 		read();
 	}
 
-	public KeyValueProperties(File properties){
+	public LineProperties(File properties){
 		properties.getParentFile().mkdirs();
 		setProperties(properties.getAbsolutePath());
 		read();
@@ -111,7 +113,7 @@ public class KeyValueProperties extends AbstractProp implements IProp {
 	}
 
 	public static void main(String[] args) {
-		IProp kp = new KeyValueProperties(new File(".build/v.properties"));
+		IProp kp = new LineProperties(new File(".build/v.properties"));
 		kp.setProperty("high.score", "-20000", "highest player scored tonight");
 		kp.setProperty("low.score", "200", "lowest player score");
 	}

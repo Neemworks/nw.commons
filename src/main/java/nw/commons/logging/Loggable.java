@@ -7,7 +7,7 @@ import org.slf4j.LoggerFactory;
  * Provides none static slf4j logger access to
  * classes that extend it
  * @author Ogwara O. Rowland
- * @since 2.0
+ * @since 1.3.0
  *
  */
 public abstract class Loggable {
