@@ -8,6 +8,17 @@ This project consists of basic functions used often in our software development 
 * A base loop process for implementing infinite loops
 * A factory for spawning threads
 
+#### Add Dependencies
+Hosted on maven central
+
+``` xml
+  <dependency>
+    	<groupId>com.nimworks</groupId>
+    	<artifactId>nw.commons</artifactId>
+    	<version>1.3.1</version>
+    </dependency>
+```
+
 ### Sample Usage
 #### Logging and Properties Files
 
