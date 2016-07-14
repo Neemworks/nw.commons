@@ -24,5 +24,58 @@ public abstract class Loggable {
     public Logger getLogger() {
 		return logger;
 	}
+    
+
+    /**
+     * static debug logging.
+     *
+     * @param clz class to be debugged
+     * @param msg message to log
+     */
+    protected static void sd(Class<?> clz, String msg){
+    	LoggerFactory.getLogger(clz).debug(msg);
+    }
+
+    /**
+     * static info logging.
+     *
+     * @param clz class to be debugged
+     * @param msg message to log
+     */
+    protected static void si(Class<?> clz, String msg){
+    	LoggerFactory.getLogger(clz).info(msg);
+    }
+
+    /**
+     * static trace logging.
+     *
+     * @param clz class to be debugged
+     * @param msg message to log
+     */
+    protected static void st(Class<?> clz, String msg){
+    	LoggerFactory.getLogger(clz).trace(msg);
+    }
+
+    /**
+     * static warn logging.
+     *
+     * @param clz class to be logged
+     * @param msg message to log
+     * @param t exception to log
+     */
+    protected static void sd(Class<?> clz, String msg, Throwable t){
+    	LoggerFactory.getLogger(clz).warn(msg, t);
+    }
+
+    /**
+     * static error logging.
+     *
+     * @param clz class to be logged
+     * @param msg message to log
+     * @param t exception to log
+     */
+    protected static void se(Class<?> clz, String msg, Throwable t){
+    	LoggerFactory.getLogger(clz).error(msg, t);
+    }
 
 }
