@@ -1,6 +1,6 @@
 package nw.commons.beans;
 
-import com.nimworks.commons.NeemClazz;
+import nw.commons.NeemClazz;
 
 public class TestProperty extends NeemClazz{
 

@@ -12,11 +12,11 @@
  ACTION OF CONTRACT, NEGLIGENCE OR OTHER TORTIOUS ACTION, ARISING OUT OF
  OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
  */
-package com.nimworks.commons;
+package nw.commons;
 
-import com.nimworks.commons.cache.PropertiesCache;
-import com.nimworks.commons.logging.Loggable;
-import com.nimworks.commons.props.IProp;
+import nw.commons.cache.PropertiesCache;
+import nw.commons.logging.Loggable;
+import nw.commons.props.IProp;
 
 /**
  * Base class that includes logger and property file access

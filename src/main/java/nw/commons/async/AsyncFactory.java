@@ -12,9 +12,9 @@
  ACTION OF CONTRACT, NEGLIGENCE OR OTHER TORTIOUS ACTION, ARISING OUT OF
  OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
  */
-package com.nimworks.commons.async;
+package nw.commons.async;
 
-import com.nimworks.commons.exception.NwException;
+import nw.commons.exception.NwException;
 
 /**
  * Utility operations spawning threads

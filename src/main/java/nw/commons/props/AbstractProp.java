@@ -1,4 +1,4 @@
-package com.nimworks.commons.props;
+package nw.commons.props;
 
 import java.io.BufferedReader;
 import java.io.File;
@@ -11,7 +11,7 @@ import java.util.Map;
 import java.util.SortedSet;
 import java.util.TreeSet;
 
-import com.nimworks.commons.logging.Loggable;
+import nw.commons.logging.Loggable;
 
 /**
  *

@@ -10,7 +10,7 @@
  * Copyright Neemworks
  * http://www.neemworks.net
  */
-package com.nimworks.commons.props;
+package nw.commons.props;
 
 /**
  * Represents a line in a properties files, which can either be a comment of a key value separated by

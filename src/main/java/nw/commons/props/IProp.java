@@ -10,7 +10,7 @@
  * Copyright Neemworks
  * http://www.neemworks.net
  */
-package com.nimworks.commons.props;
+package nw.commons.props;
 
 import java.math.BigDecimal;
 
