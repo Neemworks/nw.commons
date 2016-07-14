@@ -173,6 +173,10 @@ public abstract class TextLineManager extends Loggable{
 	 * @return the property value
 	 */
 	protected synchronized String get(String key) {
+		if(key == null){
+			return null;
+		}
+		key = key.trim();
 		String prev = store.get(key);
 		return prev;
 	}

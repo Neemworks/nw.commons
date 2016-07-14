@@ -113,9 +113,10 @@ public class LineProperties extends TextLineManager implements IProp {
 	}
 
 	public static void main(String[] args) {
-		IProp kp = new LineProperties(new File(".build/v.properties"));
+		IProp kp = new LineProperties("application.properties");
 		kp.setProperty("high.score", "-20000", "highest player scored tonight");
 		kp.setProperty("low.score", "200", "lowest player score");
+		System.out.println(kp.getBool("has-eyes", false));
 	}
 
 }
