@@ -100,7 +100,7 @@ public class TextLine implements Comparable<TextLine>{
 		if(texts.length < 2){
 			return "";
 		}
-		return text.split("=")[1];
+		return texts[1].trim();
 	}
 
 	/**
