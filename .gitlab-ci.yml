@@ -1,0 +1,5 @@
+test:
+    script: "mvn test"
+
+build:
+    script: "mvn clean package install"
