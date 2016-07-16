@@ -733,5 +733,7 @@ public class BCrypt {
 			System.out.println("It matches");
 		else
 			System.out.println("It does not match");
+		
+		System.out.println(BCrypt.gensalt(3));
 	}
 }
