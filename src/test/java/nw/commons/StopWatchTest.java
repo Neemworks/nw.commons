@@ -3,6 +3,7 @@ package nw.commons;
 import static org.junit.Assert.*;
 import static org.hamcrest.Matchers.*;
 
+import java.math.BigDecimal;
 import java.util.Date;
 import java.util.concurrent.TimeUnit;
 
@@ -16,7 +17,7 @@ public class StopWatchTest {
 		Date now = new Date();
 
 		sleep(1);
-		assertEquals(sw.elapsedTime(), (new Date().getTime() - now.getTime()));
+		assertThat(new BigDecimal(sw.elapsedTime()), closeTo(new BigDecimal(new Date().getTime() - now.getTime()), new BigDecimal("100")));
 	}
 
 //	@Test
