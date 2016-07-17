@@ -8,6 +8,7 @@ public class RCoderTest {
 
 	@Test
 	public void testEncode() {
+		System.out.println("RCoder encode");
 		RCoder r = new RCoder();
 		String encText = "";
 		encText = r.base64encode("openminds");
@@ -16,6 +17,7 @@ public class RCoderTest {
 
 	@Test
 	public void testDecode() {
+		System.out.println("RCoder decode");
 		RCoder r = new RCoder();
 		String decText = "";
 		decText = r.base64decode("b3Blbm1pbmRz");
