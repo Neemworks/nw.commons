@@ -53,7 +53,7 @@ public class LineProperties extends TextLineManager implements IProp {
 	@Override
 	public String getProperty(String key, String defaultVal) {
 		String pty = get(key);
-		return pty == null ? defaultVal : pty;
+		return pty == null ? defaultVal.trim() : pty.trim();
 	}
 
 	/* (non-Javadoc)
@@ -114,7 +114,7 @@ public class LineProperties extends TextLineManager implements IProp {
 
 	public static void main(String[] args) {
 		IProp kp = new LineProperties("application.properties");
-		kp.setProperty("high.score", "-20000", "highest player scored tonight");
+		kp.setProperty("high.score", "120000", "highest player scored tonight");
 		kp.setProperty("low.score", "200", "lowest player score");
 		System.out.println(kp.getBool("has-eyes", false));
 	}
