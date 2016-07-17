@@ -31,8 +31,8 @@ public class LinePropertiesTest {
 		props.set("props.15", "2", "property 15");
 		props.set("props.16", "false", "property 16");
 		props.set("props.17", " 2", "property 17");
-		props.set("props-18", "2 ", "property 18");
-		props.set("props-19", " true ", "property 19");
+		props.set("props.18", "2\t", "property 18");
+		props.set("props.19", " true ", "property 19");
 		props.set("props.20", "222", "property twenty");
 		
 	}
@@ -96,9 +96,9 @@ public class LinePropertiesTest {
 	@Test
 	public void testValueTrimming() {
 		System.out.println("Testing LineProperties Value Trimming");
-		System.out.println(props.getBool("props-19", false));
-		System.out.println(props.getInt("props-18", new Integer(12)));
-		assertTrue(props.getBool("props-19", false));
+		assertTrue(props.getBool("props.19", false));
+		assertEquals(props.getInt("props.18", -1), new Integer(2));
+		
 	}
 
 }

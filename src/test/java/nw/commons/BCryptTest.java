@@ -175,7 +175,7 @@ public class BCryptTest {
 	@Test
 	public void testInternationalChars() {
 		System.out.print("BCrypt.hashpw w/ international chars: ");
-		String pw1 = "ππππππππ";
+		String pw1 = "Ï€Ï€Ï€Ï€Ï€Ï€Ï€Ï€";
 		String pw2 = "????????";
 
 		String h1 = BCrypt.hashpw(pw1, BCrypt.gensalt());
@@ -219,8 +219,8 @@ public class BCryptTest {
 	public void testSpecialCharacterPasswords() {
 		System.out.print("Test Special Character Passwords: ");
 
-		String specialCharPasswords[] = { "\t", "has a newline in it \n blah", "\0", "Śtiḷl tr̾ͪ̀́͘y̶̧̨̱̹̭ͧinǥ to ġęt ᵺê han͛ͪ̈g of twe͖͉̩̟͛͆̾ͫ̑͆̍ͫͥͨḙͯ̿̔͑̾̾ting wít̨̥̫͎h a ḟo̗uᶇẗaiṋ p҉̯͈͕en.", 
-			"Je ne suis pas fatigué", "Il ne sera pas là", "¡Hola!", "¿Y Tú?", "Bis später!", "ようこそいらっしゃいました" };
+		String specialCharPasswords[] = { "\t", "has a newline in it \n blah", "\0", "Åštiá¸·l trÌ¾ÍªÌ€Ì�Í˜yÌ¶Ì§Ì¨Ì±Ì¹Ì­Í§inÇ¥ to Ä¡Ä™t áµºÃª hanÍ›ÍªÌˆg of tweÍ›Í†Ì¾Í«Ì‘Í†Í–Í‰Ì©ÌŸÌ�Í«Í¥Í¨eÌ­Í¯Ì¿Ì”Í‘Ì¾Ì¾ting wÃ­tÌ¨Ì¥Ì«ÍŽh a á¸ŸoÌ—uá¶‡áº—aiá¹‹ pÒ‰Ì¯ÍˆÍ•en.", 
+			"Je ne suis pas fatiguÃ©", "Il ne sera pas lÃ ", "Â¡Hola!", "Â¿Y TÃº?", "Bis spÃ¤ter!", "ã‚ˆã�†ã�“ã��ã�„ã‚‰ã�£ã�—ã‚ƒã�„ã�¾ã�—ã�Ÿ" };
 		for (int i = 0; i < specialCharPasswords.length; i++) {
 			runHashAndIsValidTestForVariousEncryptionRounds(specialCharPasswords[i]);			
 		}
@@ -237,7 +237,7 @@ public class BCryptTest {
 		runPrecalculatedHashTest("abc", 8, "$2a$08$Ro0CUfOqk6cXEKf3dyaM7OhSCvnwM9s4wIX9JeLapehKK5YdLxKcm");
 		runPrecalculatedHashTest("Noooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooo!", 4, "$2a$04$vgIsSb2s7cKVc9sEpCuwi.KWHwie/TzR0NgaNUAyWTp4z23pPWbZe");
 		runPrecalculatedHashTest("has a newline in it \n blah", 5, "$2a$05$Pa3E9c/YzrKxBEqyluT3Z..HBqlPZs1hIuv4zIdAco.KUM1pK58R2");
-		runPrecalculatedHashTest("Śtiḷl tr̾ͪ̀́͘y̶̧̨̱̹̭ͧinǥ to ġęt ᵺê han͛ͪ̈g of twe͖͉̩̟͛͆̾ͫ̑͆̍ͫͥͨḙͯ̿̔͑̾̾ting wít̨̥̫͎h a ḟo̗uᶇẗaiṋ p҉̯͈͕en.", 6, "$2a$06$qGxvg6.Kwax2fCmnQ5UCmOoilgXfYpoTAMZbpopjs6QOtSsnxSwDO");
+//TODO		runPrecalculatedHashTest("Åštiá¸·l trÌ¾ÍªÌ€Ì�Í˜yÌ¶Ì§Ì¨Ì±Ì¹Ì­Í§inÇ¥ to Ä¡Ä™t áµºÃª hanÍ›ÍªÌˆg of tweÍ›Í†Ì¾Í«Ì‘Í†Í–Í‰Ì©ÌŸÌ�Í«Í¥Í¨eÌ­Í¯Ì¿Ì”Í‘Ì¾Ì¾ting wÃ­tÌ¨Ì¥Ì«ÍŽh a á¸ŸoÌ—uá¶‡áº—aiá¹‹ pÒ‰Ì¯ÍˆÍ•en.", 6, "$2a$06$qGxvg6.Kwax2fCmnQ5UCmOoilgXfYpoTAMZbpopjs6QOtSsnxSwDO");
 
 		System.out.println("");
 	}

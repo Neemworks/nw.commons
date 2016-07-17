@@ -53,7 +53,7 @@ public class LineProperties extends TextLineManager implements IProp {
 	@Override
 	public String getProperty(String key, String defaultVal) {
 		String pty = get(key);
-		return pty == null ? defaultVal : pty;
+		return pty == null ? defaultVal.trim() : pty.trim();
 	}
 
 	/* (non-Javadoc)

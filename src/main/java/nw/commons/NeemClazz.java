@@ -57,7 +57,7 @@ public abstract class NeemClazz extends Loggable{
 	 */
 	public abstract void setTargetPropertyFilename();
 
-	public IProp getPropertie(){
+	public IProp getProperties(){
 		return this.appProps;
 	}
 

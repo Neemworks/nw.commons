@@ -102,4 +102,7 @@
   	<url>https://github.com/Neemworks/nw.commons/issues</url>
   	<system>Github</system>
   </issueManagement>
+  <properties>
+  	<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+  </properties>
 </project>

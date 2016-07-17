@@ -2,9 +2,9 @@ package nw.commons.beans;
 
 import nw.commons.NeemClazz;
 
-public class TestProperty extends NeemClazz{
+public class TestClazz extends NeemClazz{
 
-	public TestProperty() {
+	public TestClazz() {
 		super();
 	}
 
