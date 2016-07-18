@@ -31,7 +31,7 @@ public abstract class AsyncFactory {
 	 * @param daemon should the report run as a daemon
 	 */
 	public static void spawnRunnable(final Runnable proc, final String processName, final boolean autoStart, final boolean daemon){
-		final Thread t = new Thread(proc); // NOPMD by Rowland on 7/17/16 3:44 PM
+		final Thread t = new Thread(proc); 
 		t.setName(processName);
 		if(daemon){
 			t.setDaemon(daemon);

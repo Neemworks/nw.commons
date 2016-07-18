@@ -14,6 +14,8 @@ package nw.commons.props.text;
 
 import java.io.File;
 import java.math.BigDecimal;
+import java.util.HashSet;
+import java.util.Set;
 
 import nw.commons.props.IProp;
 
@@ -43,7 +45,7 @@ public class LineProperties extends TextLineManager implements IProp {
 	 * @see com.nimworks.commons.props.IProp#setProperty(java.lang.String, java.lang.String, java.lang.String)
 	 */
 	@Override
-	public void setProperty(String key, String value, String comments) {
+	public void setProperty(String key, Object value, String comments) {
 		set(key, value, comments);
 	}
 
@@ -112,6 +114,44 @@ public class LineProperties extends TextLineManager implements IProp {
 		return Boolean.valueOf(getProperty(key, defaultVal.toString()));
 	}
 
+	@Override
+	public Boolean containsKey(String key) {
+		return store.containsKey(key);
+	}
+
+	@Override
+	public Set<String> getKeys() {
+		return store.keySet();
+	}
+
+	@Override
+	public Set<String> getKeys(String prefix) {
+		// TODO build a trie for the keys, to enhance speed
+		Set<String> ks = store.keySet();
+		Set<String> res = new HashSet<String>();
+		// O(n)
+		for (String key : ks) {
+			if(key.startsWith(prefix)){
+				res.add(key);
+			}
+		}
+		return res;
+	}
+
+	@Override
+	public String[] getStringArray(String key) {
+		return getStringArray(key, ",");
+	}
+	
+	@Override
+	public String[] getStringArray(String key, String delimter) {
+		String delim = get(key);
+		if(delim == null){
+			return new String[0];
+		}
+		return delim.split(delimter);
+	}
+	
 	public static void main(String[] args) {
 		IProp kp = new LineProperties("application.properties");
 		kp.setProperty("high.score", "120000", "highest player scored tonight");
