@@ -109,10 +109,11 @@ public abstract class TextLineManager extends Loggable{
 	 * sets the value for a property.
 	 *
 	 * @param key reference key for property
-	 * @param value property value
+	 * @param vo property value
 	 * @param comments description for property
 	 */
-	protected synchronized void set(String key, String value, String comments) {
+	protected synchronized void set(String key, Object vo, String comments) {
+		String value = (String) vo;
 		String prev = store.put(key, value);
 		if(prev == null){
 			// new entry
@@ -188,7 +189,7 @@ public abstract class TextLineManager extends Loggable{
 	public void setProperties(String properties) {
 		this.properties = properties;
 	}
-
+	
 	public static void main(String[] args) throws IOException {
 		SortedSet<TextLine> lines = new TreeSet<TextLine>();
 		FileReader fr = new FileReader("application.properties");

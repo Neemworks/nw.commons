@@ -21,7 +21,7 @@ import nw.commons.exception.NwException;
  * @author kulgan
  *
  */
-public class AsyncFactory {
+public abstract class AsyncFactory {
 
 	/**
 	 *
@@ -30,13 +30,15 @@ public class AsyncFactory {
 	 * @param autoStart should thread be started automatically
 	 * @param daemon should the report run as a daemon
 	 */
-	public static void spawnRunnable(Runnable proc, String processName, boolean autoStart, boolean daemon){
-		Thread t = new Thread(proc);
+	public static void spawnRunnable(final Runnable proc, final String processName, final boolean autoStart, final boolean daemon){
+		final Thread t = new Thread(proc); 
 		t.setName(processName);
-		if(daemon)
+		if(daemon){
 			t.setDaemon(daemon);
-		if(autoStart)
+		}
+		if(autoStart){
 			t.start();
+		}
 	}
 
 	/**
@@ -44,7 +46,7 @@ public class AsyncFactory {
 	 * @param proc Runnable class to spawn
 	 * @param processName process name used to identify this thread
 	 */
-	public static void spawnRunnable(Runnable proc, String processName){
+	public static void spawnRunnable(final Runnable proc, final String processName){
 		spawnRunnable(proc, processName, true, false);
 	}
 
@@ -54,10 +56,10 @@ public class AsyncFactory {
 	 * @param processName unique name for the thread
 	 * @param numberOfProcess number of threads to spawn
 	 */
-	public static void spawnMultiple(Class<?> clazz, String processName, int numberOfProcess){
+	public static void spawnMultiple(final Class<?> clazz, final String processName, final int numberOfProcess){
 		for(int z = 0; z <= numberOfProcess; z++){
 			try {
-				Runnable proc = (Runnable) clazz.getConstructor().newInstance();
+				final Runnable proc = (Runnable) clazz.getConstructor().newInstance();
 				spawnRunnable(proc, processName + "_" + z);
 			} catch (Exception e) {
 				throw new NwException("Spawn encountered an error: ", e);

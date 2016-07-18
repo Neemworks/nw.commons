@@ -2,8 +2,11 @@ package nw.commons.props.text;
 
 import static org.junit.Assert.*;
 
+import java.io.File;
 import java.math.BigDecimal;
+import java.util.Set;
 
+import org.junit.AfterClass;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -35,6 +38,14 @@ public class LinePropertiesTest {
 		props.set("props.19", " true ", "property 19");
 		props.set("props.20", "222", "property twenty");
 		
+		props.set("list.21", "222,234,255,265", "property list");
+		props.set("list.22", "222-234-255-265", "property list");
+		
+	}
+	
+	@AfterClass
+	public static void exit(){
+		new File("test.properties").delete();
 	}
 
 	@Test
@@ -99,6 +110,49 @@ public class LinePropertiesTest {
 		assertTrue(props.getBool("props.19", false));
 		assertEquals(props.getInt("props.18", -1), new Integer(2));
 		
+	}
+	
+	@Test
+	public void testContainsKey(){
+		Boolean ck = props.containsKey("evil.2");
+		assertFalse(ck);
+		assertTrue(props.containsKey("props.20"));
+	}
+	
+	@Test
+	public void testGetKeys(){
+		Set<String> keys = props.getKeys();
+		assertEquals(keys.size(), 22);
+	}
+	
+	@Test
+	public void testGetKeysPrefix(){
+		Set<String> keys = props.getKeys("props");
+		assertEquals(20, keys.size());
+		keys = props.getKeys("list");
+		assertEquals(2, keys.size());
+		keys = props.getKeys("prooops");
+		assertEquals(0, keys.size());
+	}
+	
+	@Test
+	public void testGetStringArray(){
+		String[] sa = props.getStringArray("list.21");
+		assertEquals(4, sa.length);
+		assertEquals("222", sa[0]);
+		assertEquals("234", sa[1]);
+		assertEquals("255", sa[2]);
+		assertEquals("265", sa[3]);
+	}
+	
+	@Test
+	public void testGetStringArrayDelimited(){
+		String[] sa = props.getStringArray("list.22", "-");
+		assertEquals(4, sa.length);
+		assertEquals("222", sa[0]);
+		assertEquals("234", sa[1]);
+		assertEquals("255", sa[2]);
+		assertEquals("265", sa[3]);
 	}
 
 }

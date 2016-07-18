@@ -13,6 +13,7 @@
 package nw.commons.props;
 
 import java.math.BigDecimal;
+import java.util.Set;
 
 public interface IProp {
 
@@ -23,7 +24,7 @@ public interface IProp {
 	 * @param value property value
 	 * @param comments message
 	 */
-	void setProperty(String key, String value, String comments);
+	void setProperty(String key, Object value, String comments);
 
 	/**
 	 * Retrieves a property with the specified key.
@@ -95,5 +96,43 @@ public interface IProp {
 	 * @return the bool value for the target key
 	 */
 	Boolean getBool(String key, Boolean defaultVal);
+	
+	/**
+	 * Searches the property file to determine if there is any property
+	 * specified for the key
+	 * @param key key used to search
+	 * @return true if key is found, else returns false
+	 */
+	Boolean containsKey(String key);
+	
+	/**
+	 * Retrieves and return the set of all the keys contained 
+	 * within the property file
+	 * @return Set of all the keys found in the file
+	 */
+	Set<String> getKeys();
+	
+	/**
+	 * Retrieves and returns all keys starting with the given
+	 * prefix
+	 * @param prefix key prefix
+	 * @return
+	 */
+	Set<String> getKeys(String prefix);
+	
+	/**
+	 * Splits a given property by comma and returns the resulting string array
+	 * @param key the key of the property
+	 * @return An array of strings
+	 */
+	String[] getStringArray(String key);
+	
+	/**
+	 * Splits a property by the provided delimter
+	 * @param key target key
+	 * @param delimter the delimiter to use
+	 * @return An array of strings
+	 */
+	String[] getStringArray(String key, String delimter);
 
 }
