@@ -148,11 +148,20 @@ public abstract class TextLineManager extends Loggable{
 	protected synchronized void remove(String key) {
 		store.remove(key);
 		TextLine line = null;
+		TextLine previous = null;
+		int lineNumber = 0;
 		for (TextLine textLine : lines) {
+			lineNumber +=1;
 			if(textLine.isKey(key)){
 				line = textLine;
 				break;
 			}
+			if(lineNumber > 2){
+				previous = textLine;
+			}
+		}
+		if(previous != null && previous.isComment()){
+			lines.remove(previous);
 		}
 		lines.remove(line);
 		save();

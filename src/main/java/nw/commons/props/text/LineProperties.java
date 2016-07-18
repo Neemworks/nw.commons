@@ -157,6 +157,7 @@ public class LineProperties extends TextLineManager implements IProp {
 		kp.setProperty("high.score", "120000", "highest player scored tonight");
 		kp.setProperty("low.score", "200", "lowest player score");
 		System.out.println(kp.getBool("has-eyes", false));
+		kp.removeProperty("sex");
 	}
 
 }
