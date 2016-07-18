@@ -3,16 +3,8 @@ before_script:
 
 stages:
     - build
-    - deploy
 
 build_phase:
     stage: build
     script: "mvn test javadoc:jar source:jar package install"
     environment: maven_local
-
-deploy_phase:
-    stage: deploy
-    only:
-       - master
-    script: "mvn deploy -Dnexus.target=http://repo.nimworks.com:8081/repository/maven-snapshots/"
-    environment: nexus_repo
