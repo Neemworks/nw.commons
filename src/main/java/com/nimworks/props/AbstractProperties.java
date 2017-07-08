@@ -28,7 +28,7 @@ public abstract class AbstractProperties extends Loggable{
 	/**
 	 * Sorted list of lines
 	 */
-	private SortedSet<TextLine> lines = new TreeSet<TextLine>();
+	private SortedSet<LineText> lines = new TreeSet<LineText>();
 
 	/**
 	 * Current file line number
@@ -52,7 +52,7 @@ public abstract class AbstractProperties extends Loggable{
 			String line = null;
 			while ((line = br.readLine()) != null) {
 				cursor +=1;
-				TextLine text = new TextLine(cursor, line);
+				LineText text = new LineText(cursor, line);
 				lines.add(text);
 
 				if(!text.isComment()){
@@ -75,7 +75,7 @@ public abstract class AbstractProperties extends Loggable{
 	protected void save(){
 		try {
 			FileWriter fw = new FileWriter(properties);
-			for (TextLine textLine : lines) {
+			for (LineText textLine : lines) {
 				fw.write(textLine.getText() + "\n");
 			}
 			fw.close();
@@ -92,7 +92,7 @@ public abstract class AbstractProperties extends Loggable{
 	protected void update(String key, String value){
 		try {
 			FileWriter fw = new FileWriter(properties);
-			for (TextLine textLine : lines) {
+			for (LineText textLine : lines) {
 				if(textLine.isKey(key)){
 					textLine.setText(key + "="+value);
 				}
@@ -135,7 +135,7 @@ public abstract class AbstractProperties extends Loggable{
 		}
 
 		cursor +=1;
-		TextLine text = new TextLine(cursor, key + "="+value);
+		LineText text = new LineText(cursor, key + "="+value);
 		lines.add(text);
 		save();
 	}
@@ -146,8 +146,8 @@ public abstract class AbstractProperties extends Loggable{
 	 */
 	protected synchronized void remove(String key) {
 		store.remove(key);
-		TextLine line = null;
-		for (TextLine textLine : lines) {
+		LineText line = null;
+		for (LineText textLine : lines) {
 			if(textLine.isKey(key)){
 				line = textLine;
 				break;
@@ -163,7 +163,7 @@ public abstract class AbstractProperties extends Loggable{
 	 */
 	protected void comment(String comment){
 		cursor +=1;
-		TextLine cmts = new TextLine(cursor, "# " + comment);
+		LineText cmts = new LineText(cursor, "# " + comment);
 		lines.add(cmts);
 	}
 
@@ -186,14 +186,14 @@ public abstract class AbstractProperties extends Loggable{
 	}
 
 	public static void main(String[] args) throws IOException {
-		SortedSet<TextLine> lines = new TreeSet<TextLine>();
+		SortedSet<LineText> lines = new TreeSet<LineText>();
 		FileReader fr = new FileReader("application.properties");
 		BufferedReader br = new BufferedReader(fr);
 		String line = null;
 		Long ptn = 0L;
 		while ((line = br.readLine()) != null) {
 			ptn +=1;
-			TextLine text = new TextLine(ptn, line);
+			LineText text = new LineText(ptn, line);
 			lines.add(text);
 		}
 		br.close();
@@ -201,7 +201,7 @@ public abstract class AbstractProperties extends Loggable{
 		System.out.println(lines);
 
 		FileWriter fw = new FileWriter("app.properties");
-		for (TextLine textLine : lines) {
+		for (LineText textLine : lines) {
 			fw.write(textLine.getText() + "\n");
 		}
 		fw.close();
