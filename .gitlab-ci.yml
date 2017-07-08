@@ -1,0 +1,10 @@
+before_script:
+    - "mvn clean"
+
+stages:
+    - build
+
+build_phase:
+    stage: build
+    script: "mvn test javadoc:jar source:jar package install"
+    environment: maven_local
