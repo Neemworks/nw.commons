@@ -1,4 +1,4 @@
-package nw.commons.exception;
+package com.nimworks.exception;
 
 public class NwException extends IllegalArgumentException {
 

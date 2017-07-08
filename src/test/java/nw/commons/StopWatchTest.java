@@ -8,6 +8,8 @@ import java.util.concurrent.TimeUnit;
 
 import org.junit.Test;
 
+import com.nimworks.StopWatch;
+
 public class StopWatchTest {
 
 	@Test

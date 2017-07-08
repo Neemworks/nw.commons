@@ -1,4 +1,4 @@
-package nw.commons.props;
+package com.nimworks.props;
 
 import java.math.BigDecimal;
 

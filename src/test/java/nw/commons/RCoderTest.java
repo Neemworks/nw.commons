@@ -4,6 +4,8 @@ import static org.junit.Assert.*;
 
 import org.junit.Test;
 
+import com.nimworks.RCoder;
+
 public class RCoderTest {
 
 	@Test

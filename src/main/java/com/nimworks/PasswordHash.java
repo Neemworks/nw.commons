@@ -26,7 +26,7 @@
  * POSSIBILITY OF SUCH DAMAGE.
  */
 
-package nw.commons;
+package com.nimworks;
 
 import java.security.SecureRandom;
 import javax.crypto.spec.PBEKeySpec;

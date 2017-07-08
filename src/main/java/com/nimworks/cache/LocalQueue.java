@@ -12,11 +12,12 @@
  ACTION OF CONTRACT, NEGLIGENCE OR OTHER TORTIOUS ACTION, ARISING OUT OF
  OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
  */
-package nw.commons.cache;
+package com.nimworks.cache;
 
 import java.util.List;
 import java.util.concurrent.ConcurrentLinkedQueue;
-import nw.commons.logging.Loggable;
+
+import com.nimworks.logging.Loggable;
 
 /**
  * Simple queue Implementation.
