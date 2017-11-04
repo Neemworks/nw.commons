@@ -1,4 +1,4 @@
-package com.nimworks.config.cache;
+package com.nimworks.config;
 
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;

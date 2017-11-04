@@ -1,11 +1,8 @@
-package com.nimworks.config.impl;
+package com.nimworks.config;
 
 import java.io.File;
 import java.util.Map;
 
-import com.nimworks.config.IConfiguration;
-import com.nimworks.config.ISource;
-import com.nimworks.config.cache.ConfigurationCache;
 import com.nimworks.config.source.KeyValueFileSource;
 
 /**

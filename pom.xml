@@ -107,5 +107,5 @@
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<nexus.target>http://repo.nimworks.com:8081/repository/maven-snapshots/</nexus.target>
 	</properties>
-	<version>2.0.0</version>
+	<version>2.1.0</version>
 </project>

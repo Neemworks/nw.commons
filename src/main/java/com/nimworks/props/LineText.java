@@ -1,5 +1,13 @@
 package com.nimworks.props;
 
+import java.util.Objects;
+
+/**
+ * 
+ * @author Ogwara O. Rowland
+ * @since Jul 8, 2017
+ *
+ */
 public class LineText implements Comparable<LineText>{
 
 	private String key;
@@ -45,24 +53,27 @@ public class LineText implements Comparable<LineText>{
 		return text.split("=")[1];
 	}
 	
-	@Override
-	public int hashCode() {
-		// TODO Auto-generated method stub
-		return super.hashCode();
-	}
-	
-	@Override
-	public boolean equals(Object obj) {
-		// TODO Auto-generated method stub
-		return super.equals(obj);
-	}
-
 	public boolean isKey(String key){
 		if(isComment()){
 			return false;
 		}else{
 			return key.equals(getKey());
 		}
+	}
+	
+	@Override
+	public int hashCode() {
+		return Objects.hash(getKey());
+	}
+	
+	@Override
+	public boolean equals(Object obj) {
+		if(obj == null || !(obj instanceof LineText)) {
+			return false;
+		}
+		
+		LineText that = (LineText) obj;
+		return Objects.equals(getKey(), that.getKey());
 	}
 
 	@Override

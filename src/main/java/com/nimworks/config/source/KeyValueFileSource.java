@@ -4,6 +4,7 @@ import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
@@ -13,7 +14,7 @@ import java.util.TreeSet;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import com.nimworks.config.ISource;
+import com.nimworks.config.ext.ExternalSource;
 import com.nimworks.props.LineText;
 
 /**
@@ -22,7 +23,7 @@ import com.nimworks.props.LineText;
  * @since Jul 7, 2017
  *
  */
-public class KeyValueFileSource implements ISource {
+public class KeyValueFileSource extends ExternalSource {
 	
 	private File file;
 	
@@ -75,6 +76,58 @@ public class KeyValueFileSource implements ISource {
 	public void write(Map<String, Object> configs) {
 		// TODO Auto-generated method stub
 
+	}
+
+	@Override
+	public void refresh() {
+		// empty the properties file
+		// rewrite with new entries
+		
+		new Thread(new Runnable() {
+			
+			@Override
+			public void run() {
+				try {
+					FileWriter fw = new FileWriter(file);
+					StringBuilder content = new StringBuilder();
+					for (LineText textLine : lines) {
+						content.append(textLine.getText() + "\n");
+					}
+					fw.write(content.toString());
+					fw.close();
+				} catch (IOException e) {
+					logger.error("A read error occurred while reading " + file );
+				}
+				
+			}
+		});
+		
+	}
+
+	@Override
+	public void add(String key, String value, String comment) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void update(String key, String value) {
+		
+		for (LineText textLine : lines) {
+			if(textLine.isKey(key)){
+				textLine.setText(key + "="+value);
+			}
+		}
+		
+		refresh();
+		
+	}
+
+	@Override
+	public void remove(String key) {
+		LineText line = new LineText(1L, key +"= Dummy");
+		lines.remove(line);
+		
 	}
 
 }
